@@ -1,19 +1,22 @@
 {
-  "name": "redux-real-world-example",
+  "name": "redux-async-boilerplate",
   "version": "0.0.0",
-  "description": "Redux real-world example",
+  "description": "Redux Async Boilerplate",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "test": "mocha --compilers js:babel-core/register --require ./tests/test_helper.js 'tests/**/*.@(js|jsx)' --reporter nyan",
+    "test:watch": "npm run test -- --watch",
+    "deploy": "npm run test"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/rackt/redux.git"
+    "url": "https://github.com/shanedasilva/redux-async-boilerplate.git"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/rackt/redux/issues"
+    "url": "https://github.com/shanedasilva/redux-async-boilerplate/issues"
   },
-  "homepage": "http://rackt.github.io/redux",
+  "homepage": "https://github.com/shanedasilva",
   "dependencies": {
     "history": "1.13.1",
     "humps": "^0.6.0",
@@ -22,6 +25,7 @@
     "lodash": "^3.10.1",
     "normalizr": "^1.0.0",
     "react": "^0.14.0",
+    "react-addons-test-utils": "^0.14.3",
     "react-dom": "^0.14.0",
     "react-redux": "^2.1.2",
     "react-router": "^1.0.0-rc1",
@@ -34,8 +38,12 @@
     "babel-core": "^5.6.18",
     "babel-loader": "^5.1.4",
     "babel-plugin-react-transform": "^1.1.0",
+    "chai": "^3.4.1",
+    "chai-immutable": "^1.5.3",
     "concurrently": "^0.1.1",
     "express": "^4.13.3",
+    "jsdom": "^7.2.1",
+    "mocha": "^2.3.4",
     "react-transform-hmr": "^1.0.0",
     "redux-devtools": "^3.0.0-beta-3",
     "redux-devtools-dock-monitor": "^1.0.0-beta-3",
