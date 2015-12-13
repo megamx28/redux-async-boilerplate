@@ -1,4 +1,4 @@
-Redux Async Boilerplate
+# Redux Async Boilerplate [![build status](https://img.shields.io/travis/shanedasilva/redux-async-boilerplate/master.svg?style=flat-square)](https://travis-ci.org/shanedasilva/redux-async-boilerplate)
 
 Redux is a predictable state container for JavaScript apps.
 
@@ -7,4 +7,4 @@ It helps you write applications that behave consistently, run in different envir
 You can use Redux together with [React](https://facebook.github.io/react/), or with any other view library.
 It is tiny (2kB) and has no dependencies.
 
-[![build status](https://img.shields.io/travis/shanedasilva/redux-async-boilerplate/master.svg?style=flat-square)](https://travis-ci.org/shanedasilva/redux-async-boilerplate)
+
