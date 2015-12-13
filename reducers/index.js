@@ -5,7 +5,7 @@ import { combineReducers }              from 'redux'
 import { Map }                          from 'immutable'
 
 // Updates an entity cache in response to any action with response.users
-function users(state = Map({users: {}}), action) {
+function users(state = {users: Map({})), action) {
     if (action.response && action.response.entities) {
         return state.set('users', users => users.push(action.response.entities.users.undefined[0]))
     }

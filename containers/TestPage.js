@@ -15,11 +15,11 @@ class TestPage extends Component {
         loadData(this.props)
     }
 
-    // componentWillReceiveProps(nextProps) {
-    //     if (nextProps.users !== this.props.users) {
-    //         loadData(nextProps)
-    //     }
-    // }
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.users !== this.props.users) {
+            loadData(nextProps)
+        }
+    }
 
     render() {
         const { user } = this.props
