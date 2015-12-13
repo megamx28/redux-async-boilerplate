@@ -15,22 +15,28 @@ class TestPage extends Component {
         loadData(this.props)
     }
 
+    // componentWillReceiveProps(nextProps) {
+    //     if (nextProps.users !== this.props.users) {
+    //         loadData(nextProps)
+    //     }
+    // }
+
     render() {
-        const { users } = this.props
-        if (!users) {
-            return <h1><i>Loading users...</i></h1>
+        const { user } = this.props
+        if (!user) {
+            return <h1><i>Loading user...</i></h1>
         }
 
         return (
             <div>
-                {users}
+                {user}
             </div>
         )
     }
 }
 
 TestPage.propTypes = {
-    users: PropTypes.object,
+    user: PropTypes.object,
     loadUsers: PropTypes.func.isRequired,
 }
 
