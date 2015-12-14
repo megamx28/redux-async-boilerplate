@@ -1,15 +1,16 @@
 import { CALL_API, Schemas } from '../middleware/api'
-
-export const USERS_REQUEST = 'USERS_REQUEST'
-export const USERS_SUCCESS = 'USERS_SUCCESS'
-export const USERS_FAILURE = 'USERS_FAILURE'
+import * as Constants        from '../constants/users'
 
 // Relies on the custom API middleware defined in ../middleware/api.js.
 function fetchUsers() {
     return {
         [CALL_API]: {
-            types: [USERS_REQUEST, USERS_SUCCESS, USERS_FAILURE],
-            endpoint: `users`,
+            types: [
+                Constants.USERS_REQUEST,
+                Constants.USERS_SUCCESS,
+                Constants.USERS_FAILURE
+            ],
+            endpoint: 'users',
             schema: Schemas.USERS_ARRAY
         }
     }
@@ -19,8 +20,7 @@ function fetchUsers() {
 // Relies on Redux Thunk middleware.
 export function loadUsers(login, requiredFields = []) {
     return (dispatch, getState) => {
-        const users = getState().users
-        if (users.size) {
+        if (getState().users.size) {
             return null
         }
 
@@ -28,11 +28,9 @@ export function loadUsers(login, requiredFields = []) {
     }
 }
 
-export const RESET_ERROR_MESSAGE = 'RESET_ERROR_MESSAGE'
-
 // Resets the currently visible error message.
 export function resetErrorMessage() {
     return {
-        type: RESET_ERROR_MESSAGE
+        type: Constants.RESET_ERROR_MESSAGE
     }
 }
