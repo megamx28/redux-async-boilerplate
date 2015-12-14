@@ -18,15 +18,13 @@ class TestPage extends Component {
         this.props.loadUsers()
     }
 
-    componentWillReceiveProps(nextProps) {
-        // if (nextProps.users !== this.props.users) {
-        //     this.props.loadUsers()
-        // }
-    }
+    // componentWillReceiveProps(nextProps) {
+    //     if (nextProps.users !== this.props.users) {
+    //         this.props.loadUsers()
+    //     }
+    // }
 
     renderUsers() {
-        console.log(this.props.users)
-
         return (
             <ol>
                 {this.props.users.map((user, index) => {

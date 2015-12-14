@@ -10,7 +10,7 @@ function fetchUsers() {
         [CALL_API]: {
             types: [USERS_REQUEST, USERS_SUCCESS, USERS_FAILURE],
             endpoint: `users`,
-            schema: Schemas.USERS
+            schema: Schemas.USERS_ARRAY
         }
     }
 }

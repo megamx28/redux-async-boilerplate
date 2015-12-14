@@ -10,7 +10,7 @@ const initialState = Map({
 
 function users(state = initialState.get('users'), action) {
     if (action.response && action.response.entities && action.response.entities.users) {
-        let usersObj = action.response.entities.users.undefined
+        let usersObj = action.response.entities.users
         let arr = Object.keys(usersObj).map((k) => usersObj[k])
 
         return state.concat(arr)
