@@ -18,12 +18,6 @@ class TestPage extends Component {
         this.props.loadUsers()
     }
 
-    // componentWillReceiveProps(nextProps) {
-    //     if (nextProps.users !== this.props.users) {
-    //         this.props.loadUsers()
-    //     }
-    // }
-
     renderUsers() {
         return (
             <ol>
@@ -57,5 +51,7 @@ function mapStateToProps(state) {
         users: state.users
     }
 }
+
+console.log(actionCreators)
 
 export default connect(mapStateToProps, actionCreators)(TestPage)
