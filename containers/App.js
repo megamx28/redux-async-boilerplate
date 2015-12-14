@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { connect }                     from 'react-redux'
 import { pushState }                   from 'redux-router'
-import { resetErrorMessage }           from '../actions'
+import { resetErrorMessage }           from '../actions/users'
 
 class App extends Component {
     propTypes: {

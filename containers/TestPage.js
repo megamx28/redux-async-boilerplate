@@ -1,11 +1,12 @@
 import React, { Component, PropTypes } from 'react'
+import { bindActionCreators }          from 'redux'
 import { connect }                     from 'react-redux'
-import * as actionCreators             from '../actions'
+import UserActions                     from '../actions/users'
 
 class TestPage extends Component {
     propTypes: {
-        users: PropTypes.object,
-        loadUsers: PropTypes.func.isRequired,
+        actions: React.PropTypes.object,
+        users: PropTypes.object
     }
 
     constructor(props) {
@@ -15,7 +16,7 @@ class TestPage extends Component {
     }
 
     componentWillMount() {
-        this.props.loadUsers()
+        this.props.actions.loadUsers()
     }
 
     renderUsers() {
@@ -46,12 +47,14 @@ class TestPage extends Component {
 }
 
 
-function mapStateToProps(state) {
+const mapStateToProps = (state) => {
     return {
         users: state.users
     }
 }
 
-console.log(actionCreators)
+const mapDispatchToProps = (dispatch) => ({
+    actions: bindActionCreators(UserActions, dispatch)
+})
 
-export default connect(mapStateToProps, actionCreators)(TestPage)
+export default connect(mapStateToProps, mapDispatchToProps)(TestPage)
