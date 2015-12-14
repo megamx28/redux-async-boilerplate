@@ -18,8 +18,9 @@ function callApi(endpoint, schema) {
             }
 
             const camelizedJson = camelizeKeys(json)
+            const normalizeJson = normalize(camelizedJson, schema)
 
-            return normalize(camelizedJson, schema)
+            return normalizeJson
         })
 }
 
@@ -32,10 +33,10 @@ function callApi(endpoint, schema) {
 // Read more about Normalizr: https://github.com/gaearon/normalizr
 
 const usersSchema = new Schema('users', {
-    idAttribute: 'login'
+    idAttribute: 'id'
 })
 
-// Schemas for Github API responses.
+// Schemas for API responses.
 export const Schemas = {
     USERS: usersSchema,
     USERS_ARRAY: arrayOf(usersSchema)

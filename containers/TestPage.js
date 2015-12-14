@@ -1,51 +1,63 @@
 import React, { Component, PropTypes } from 'react'
 import { connect }                     from 'react-redux'
-import { loadUsers }                   from '../actions'
-
-function loadData(props) {
-    props.loadUsers()
-}
+import * as actionCreators             from '../actions'
 
 class TestPage extends Component {
+    propTypes: {
+        users: PropTypes.object,
+        loadUsers: PropTypes.func.isRequired,
+    }
+
     constructor(props) {
         super(props)
+
+        this.renderUsers = this.renderUsers.bind(this)
     }
 
     componentWillMount() {
-        loadData(this.props)
+        this.props.loadUsers()
     }
 
     componentWillReceiveProps(nextProps) {
-        if (nextProps.users !== this.props.users) {
-            loadData(nextProps)
-        }
+        // if (nextProps.users !== this.props.users) {
+        //     this.props.loadUsers()
+        // }
+    }
+
+    renderUsers() {
+        console.log(this.props.users)
+
+        return (
+            <ol>
+                {this.props.users.map((user, index) => {
+                    return <li key={index}>{user.name}</li>
+                })}
+            </ol>
+        )
     }
 
     render() {
-        const { user } = this.props
-        if (!user) {
-            return <h1><i>Loading user...</i></h1>
+        if (!this.props.users.length) {
+            return (
+                <div>
+                    <h1><i>Loading user...</i></h1>
+                </div>
+            )
         }
 
         return (
             <div>
-                {user}
+                {this.renderUsers()}
             </div>
         )
     }
 }
 
-TestPage.propTypes = {
-    user: PropTypes.object,
-    loadUsers: PropTypes.func.isRequired,
-}
 
 function mapStateToProps(state) {
     return {
-        user: state.users
+        users: state.users
     }
 }
 
-export default connect(mapStateToProps, {
-    loadUsers
-})(TestPage)
+export default connect(mapStateToProps, actionCreators)(TestPage)

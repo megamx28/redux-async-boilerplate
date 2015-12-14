@@ -2,12 +2,18 @@ import * as ActionTypes                 from '../actions'
 import merge                            from 'lodash/object/merge'
 import { routerStateReducer as router } from 'redux-router'
 import { combineReducers }              from 'redux'
-import { Map }                          from 'immutable'
+import { Map, fromJS }                  from 'immutable'
 
-// Updates an entity cache in response to any action with response.users
-function users(state = {users: Map({})), action) {
-    if (action.response && action.response.entities) {
-        return state.set('users', users => users.push(action.response.entities.users.undefined[0]))
+const initialState = Map({
+    users: []
+})
+
+function users(state = initialState.get('users'), action) {
+    if (action.response && action.response.entities && action.response.entities.users) {
+        let usersObj = action.response.entities.users.undefined
+        let arr = Object.keys(usersObj).map((k) => usersObj[k])
+
+        return state.concat(arr)
     }
 
     return state
