@@ -23,6 +23,12 @@ module.exports = {
             loaders: ['babel'],
             exclude: /node_modules/,
             include: __dirname
+        }],
+        preLoaders: [{
+            test: /\.js?$/,
+            loaders: ['eslint'],
+            exclude: /node_modules/,
+            include: __dirname
         }]
     }
 }

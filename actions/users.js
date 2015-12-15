@@ -1,7 +1,6 @@
-import { CALL_API, Schemas } from '../middleware/api'
-import * as Constants        from '../constants/users'
+import * as Constants from '../constants/users'
 
-function fetchUsers() {
+function fetchUsers () {
     return {
         type: Constants.USERS_REQUEST,
         payload: {
