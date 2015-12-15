@@ -1,39 +1,33 @@
-// import 'whatwg-fetch'
-import { getRequestHeaders, setRequestHeaders } from '../utils'
+import { getRequestHeaders } from '../utils'
 
-function checkStatus(response) {
-    if (response.status >= 200 && response.status < 300) {
-        return response
-    } else {
-        var error = new Error(response.statusText)
-        error.response = response
-        throw error
-    }
-}
+import 'whatwg-fetch'
 
-function request({ url, method, data }, successCallback, errorCallback) {
-    fetch(url, {
+const API_ROOT = 'http://jsonplaceholder.typicode.com/'
+
+function callApi({ endpoint, method, data }, successCallback, errorCallback) {
+    const fullUrl = (endpoint.indexOf(API_ROOT) === -1) ? API_ROOT + endpoint : endpoint
+
+    fetch(fullUrl, {
         method: method || 'GET',
         headers: getRequestHeaders(),
         body: data ? JSON.stringify(data) : undefined
     })
-        .then(checkStatus)
         .then(response => response.json())
         .then(successCallback)
         .catch(errorCallback)
 }
 
 export default store => dispatch => action => {
-    if (!action.payload || !action.payload.url) {
+    if (!action.payload || !action.payload.endpoint) {
         return dispatch(action)
     }
 
     const { type } = action
-    const { url, method, data } = action.payload
+    const { endpoint, method, data } = action.payload
 
     dispatch({type: type})
 
-    return request({url, method, data}, payload => dispatch({
+    return callApi({endpoint, method, data}, payload => dispatch({
         type: type + '_SUCCESS',
         payload
     }), err => dispatch({

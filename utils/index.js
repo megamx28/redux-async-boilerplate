@@ -20,8 +20,3 @@ export function getRequestHeaders() {
         Accept: 'application/json'
     }
 }
-
-export function setRequestHeaders(xhr) {
-    xhr.setRequestHeader('Authorization', 'Basic ' + token)
-    xhr.setRequestHeader('Accept', 'application/json')
-}

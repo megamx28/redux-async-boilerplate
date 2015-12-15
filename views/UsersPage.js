@@ -3,7 +3,7 @@ import { bindActionCreators }          from 'redux'
 import { connect }                     from 'react-redux'
 import UserActions                     from '../actions/users'
 
-class TestPage extends Component {
+class UsersPage extends Component {
     propTypes: {
         actions: React.PropTypes.object,
         users: PropTypes.object
@@ -38,7 +38,6 @@ class TestPage extends Component {
         if (!this.props.users.length) {
             return (
                 <div>
-                    <button onClick={this.handleClick}>Click Test</button>
                     <h1><i>Loading user...</i></h1>
                 </div>
             )
@@ -46,6 +45,7 @@ class TestPage extends Component {
 
         return (
             <div>
+                <button onClick={this.handleClick}>Click Test</button>
                 {this.renderUsers()}
             </div>
         )
@@ -62,4 +62,4 @@ const mapDispatchToProps = (dispatch) => ({
     actions: bindActionCreators(UserActions, dispatch)
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(TestPage)
+export default connect(mapStateToProps, mapDispatchToProps)(UsersPage)

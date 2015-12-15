@@ -5,7 +5,7 @@ function fetchUsers() {
     return {
         type: Constants.USERS_REQUEST,
         payload: {
-            url: 'http://jsonplaceholder.typicode.com/users'
+            endpoint: 'users'
         }
     }
 }
