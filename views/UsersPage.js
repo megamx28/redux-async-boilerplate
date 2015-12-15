@@ -40,7 +40,6 @@ class UsersPage extends Component {
 
         return (
             <div>
-                <button onClick={this.handleClick}>Click Test</button>
                 {this.renderUsers()}
             </div>
         )
