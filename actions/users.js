@@ -24,11 +24,5 @@ export default {
         return {
             type: Constants.RESET_ERROR_MESSAGE
         }
-    },
-
-    testShane: () => {
-        return {
-            type: Constants.SHANE
-        }
     }
 }

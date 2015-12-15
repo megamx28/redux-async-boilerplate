@@ -12,16 +12,11 @@ class UsersPage extends Component {
     constructor(props) {
         super(props)
 
-        this.handleClick = this.handleClick.bind(this)
         this.renderUsers = this.renderUsers.bind(this)
     }
 
     componentWillMount() {
         this.props.actions.loadUsers()
-    }
-
-    handleClick() {
-        return this.props.action.testShane()
     }
 
     renderUsers() {
