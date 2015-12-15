@@ -7,4 +7,10 @@ It helps you write applications that behave consistently, run in different envir
 You can use Redux together with [React](https://facebook.github.io/react/), or with any other view library.
 It is tiny (2kB) and has no dependencies.
 
+## Development
+
+    npm install
+    npm run dev
+
+Go to [http://localhost:8080/public](http://localhost:8080/public).
 
