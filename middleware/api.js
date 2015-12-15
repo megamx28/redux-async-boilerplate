@@ -1,87 +1,38 @@
-import { Schema, arrayOf, normalize } from 'normalizr'
-import { camelizeKeys }               from 'humps'
-import 'isomorphic-fetch'
+import { getRequestHeaders } from '../utils'
+
+import 'whatwg-fetch'
 
 const API_ROOT = 'http://jsonplaceholder.typicode.com/'
 
-// Fetches an API response and normalizes the result JSON according to schema.
-// This makes every API response have the same shape, regardless of how nested it was.
-function callApi(endpoint, schema) {
+function callApi({ endpoint, method, data }, successCallback, errorCallback) {
     const fullUrl = (endpoint.indexOf(API_ROOT) === -1) ? API_ROOT + endpoint : endpoint
 
-    return fetch(fullUrl)
-        .then(response =>
-            response.json().then(json => ({ json, response }))
-        ).then(({ json, response }) => {
-            if (!response.ok) {
-                return Promise.reject(json)
-            }
-
-            const camelizedJson = camelizeKeys(json)
-            const normalizeJson = normalize(camelizedJson, schema)
-
-            return normalizeJson
-        })
+    fetch(fullUrl, {
+        method: method || 'GET',
+        headers: getRequestHeaders(),
+        body: data ? JSON.stringify(data) : undefined
+    })
+        .then(response => response.json())
+        .then(successCallback)
+        .catch(errorCallback)
 }
 
-// We use this Normalizr schemas to transform API responses from a nested form
-// to a flat form where repos and users are placed in `entities`, and nested
-// JSON objects are replaced with their IDs. This is very convenient for
-// consumption by reducers, because we can easily build a normalized tree
-// and keep it updated as we fetch more data.
-
-// Read more about Normalizr: https://github.com/gaearon/normalizr
-
-const usersSchema = new Schema('users', {
-    idAttribute: 'id'
-})
-
-// Schemas for API responses.
-export const Schemas = {
-    USERS: usersSchema,
-    USERS_ARRAY: arrayOf(usersSchema)
-}
-
-// Action key that carries API call info interpreted by this Redux middleware.
-export const CALL_API = Symbol('Call API')
-
-// A Redux middleware that interprets actions with CALL_API info specified.
-// Performs the call and promises when such actions are dispatched.
-export default store => next => action => {
-    const callAPI = action[CALL_API]
-    if (typeof callAPI === 'undefined') {
-        return next(action)
+export default store => dispatch => action => {
+    if (!action.payload || !action.payload.endpoint) {
+        return dispatch(action)
     }
 
-    let { endpoint } = callAPI
-    const { schema, types } = callAPI
+    const { type } = action
+    const { endpoint, method, data } = action.payload
 
-    if (typeof endpoint === 'function') {
-        endpoint = endpoint(store.getState())
-    }
+    dispatch({type: type})
 
-    if (typeof endpoint !== 'string')                   throw new Error('Specify a string endpoint URL.')
-    if (!schema)                                        throw new Error('Specify one of the exported Schemas.')
-    if (!Array.isArray(types) || types.length !== 3)    throw new Error('Expected an array of three action types.')
-    if (!types.every(type => typeof type === 'string')) throw new Error('Expected action types to be strings.')
-
-    function actionWith(data) {
-        const finalAction = Object.assign({}, action, data)
-        delete finalAction[CALL_API]
-        return finalAction
-    }
-
-    const [requestType, successType, failureType] = types
-    next(actionWith({ type: requestType }))
-
-    return callApi(endpoint, schema).then(
-        response => next(actionWith({
-            response,
-            type: successType
-        })),
-        error => next(actionWith({
-            type: failureType,
-            error: error.message || 'Something bad happened'
-        }))
-    )
+    return callApi({endpoint, method, data}, payload => dispatch({
+        type: type + '_SUCCESS',
+        payload
+    }), err => dispatch({
+        type: type + '_ERROR',
+        error: err.message || 'Unknown',
+        status: (err.response && err.response.status) || 0
+    }))
 }

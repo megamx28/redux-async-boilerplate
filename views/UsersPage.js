@@ -3,7 +3,7 @@ import { bindActionCreators }          from 'redux'
 import { connect }                     from 'react-redux'
 import UserActions                     from '../actions/users'
 
-class TestPage extends Component {
+class UsersPage extends Component {
     propTypes: {
         actions: React.PropTypes.object,
         users: PropTypes.object
@@ -12,11 +12,16 @@ class TestPage extends Component {
     constructor(props) {
         super(props)
 
+        this.handleClick = this.handleClick.bind(this)
         this.renderUsers = this.renderUsers.bind(this)
     }
 
     componentWillMount() {
         this.props.actions.loadUsers()
+    }
+
+    handleClick() {
+        return this.props.action.testShane()
     }
 
     renderUsers() {
@@ -40,12 +45,12 @@ class TestPage extends Component {
 
         return (
             <div>
+                <button onClick={this.handleClick}>Click Test</button>
                 {this.renderUsers()}
             </div>
         )
     }
 }
-
 
 const mapStateToProps = (state) => {
     return {
@@ -57,4 +62,4 @@ const mapDispatchToProps = (dispatch) => ({
     actions: bindActionCreators(UserActions, dispatch)
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(TestPage)
+export default connect(mapStateToProps, mapDispatchToProps)(UsersPage)

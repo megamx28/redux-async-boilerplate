@@ -3,14 +3,9 @@ import * as Constants        from '../constants/users'
 
 function fetchUsers() {
     return {
-        [CALL_API]: {
-            types: [
-                Constants.USERS_REQUEST,
-                Constants.USERS_SUCCESS,
-                Constants.USERS_FAILURE
-            ],
-            endpoint: 'users',
-            schema: Schemas.USERS_ARRAY
+        type: Constants.USERS_REQUEST,
+        payload: {
+            endpoint: 'users'
         }
     }
 }
@@ -29,6 +24,12 @@ export default {
     resetErrorMessage: () => {
         return {
             type: Constants.RESET_ERROR_MESSAGE
+        }
+    },
+
+    testShane: () => {
+        return {
+            type: Constants.SHANE
         }
     }
 }
