@@ -12,11 +12,16 @@ class TestPage extends Component {
     constructor(props) {
         super(props)
 
+        this.handleClick = this.handleClick.bind(this)
         this.renderUsers = this.renderUsers.bind(this)
     }
 
     componentWillMount() {
         this.props.actions.loadUsers()
+    }
+
+    handleClick() {
+        return this.props.action.testShane()
     }
 
     renderUsers() {
@@ -33,6 +38,7 @@ class TestPage extends Component {
         if (!this.props.users.length) {
             return (
                 <div>
+                    <button onClick={this.handleClick}>Click Test</button>
                     <h1><i>Loading user...</i></h1>
                 </div>
             )
@@ -45,7 +51,6 @@ class TestPage extends Component {
         )
     }
 }
-
 
 const mapStateToProps = (state) => {
     return {
