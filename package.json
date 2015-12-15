@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "description": "Redux Async Boilerplate",
   "scripts": {
-    "start": "node server.js",
+    "dev": "node server.js",
     "lint": "eslint . --ext .js --ext .jsx",
     "test": "mocha --compilers js:babel-core/register --require ./tests/test_helper.js 'tests/**/*.@(js|jsx)' --reporter nyan",
     "test:watch": "npm run test -- --watch",

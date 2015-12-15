@@ -12,5 +12,5 @@ It is tiny (2kB) and has no dependencies.
     npm install
     npm run dev
 
-Go to [http://localhost:8080/public](http://localhost:8080/public).
+Go to [http://localhost:3000](http://localhost:3000).
 
