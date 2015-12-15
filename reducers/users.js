@@ -21,9 +21,5 @@ export default createReducer(initialState, {
 
     [Constants.USERS_REQUEST_FAILURE]: (state, action) => {
         return state
-    },
-
-    [Constants.testShane]: (state, action) => {
-        return state
     }
 })
