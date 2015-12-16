@@ -8,6 +8,7 @@
     "lint:fix": "npm run lint -- --fix",
     "test": "mocha --compilers js:babel-core/register --require ./tests/test_helper.js 'tests/**/*.@(js|jsx)' --reporter nyan",
     "test:watch": "npm run test -- --watch",
+    "test:coverage": "istanbul cover _mocha -- -R spec ./tests/**/* --compilers js:babel-core/register --reporter nyan",
     "deploy": "npm run test"
   },
   "repository": {
@@ -49,8 +50,10 @@
     "eslint-loader": "^1.1.1",
     "eslint-plugin-react": "^3.11.3",
     "express": "^4.13.3",
+    "istanbul": "^0.4.1",
     "jsdom": "^7.2.1",
     "mocha": "^2.3.4",
+    "node-babel": "^0.1.2",
     "react-transform-hmr": "^1.0.0",
     "redux-devtools": "^3.0.0-beta-3",
     "redux-devtools-dock-monitor": "^1.0.0-beta-3",
