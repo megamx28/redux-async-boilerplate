@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "node server.js",
     "lint": "eslint . --ext .js --ext .jsx",
+    "lint:fix": "npm run lint -- --fix",
     "test": "mocha --compilers js:babel-core/register --require ./tests/test_helper.js 'tests/**/*.@(js|jsx)' --reporter nyan",
     "test:watch": "npm run test -- --watch",
     "deploy": "npm run test"

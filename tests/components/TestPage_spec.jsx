@@ -1,4 +1,3 @@
-import React    from 'react/addons'
 import {expect} from 'chai'
 import {
     renderIntoDocument,
