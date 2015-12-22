@@ -8,7 +8,7 @@ config.entry.push(
 );
 
 config.output = {
-    path: __dirname + '/dist',
+    path: __dirname + '/src/dist',
     filename: "bundle.js",
     publicPath: 'http://localhost:3000/static/'
 };

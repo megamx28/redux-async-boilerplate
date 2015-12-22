@@ -5,7 +5,7 @@
   "scripts": {
     "clean": "rimraf ./dist",
     "dev": "node server.js",
-    "lint": "eslint ./ --ext .js --ext .jsx",
+    "lint": "eslint ./src/ --ext .js --ext .jsx",
     "lint:fix": "npm run lint -- --fix",
     "test": "karma start",
     "test:watch": "watch 'npm run test' ./tests/",

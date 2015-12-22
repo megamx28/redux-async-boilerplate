@@ -7,7 +7,7 @@ module.exports = {
     context: __dirname,
 
     entry: [
-        __dirname + '/index.jsx'
+        __dirname + '/src/index.jsx'
     ],
 
     output: {
