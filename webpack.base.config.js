@@ -3,27 +3,32 @@ var webpack = require('webpack')
 
 module.exports = {
     devtool: 'cheap-module-eval-source-map',
+
+    context: __dirname,
+
     entry: [
-        'webpack-hot-middleware/client',
-        './index'
+        __dirname + '/index.jsx'
     ],
+
     output: {
-        path: path.join(__dirname, 'dist'),
-        filename: 'bundle.js',
-        publicPath: '/static/'
+        path: __dirname + '/dist',
+        filename: "bundle.js",
+        publicPath: 'http://localhost:3000/static/'
     },
+
     plugins: [
         new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoErrorsPlugin()
     ],
+
+    resolve: {
+        extensions: ['', '.js', '.jsx']
+    },
+
     module: {
-        loaders: [{
-            test: /\.js$/,
-            loaders: ['babel'],
-            exclude: /node_modules/,
-            include: __dirname
-        }],
+        loaders: [],
+
         preLoaders: [{
             test: /\.js?$/,
             loaders: ['eslint'],
