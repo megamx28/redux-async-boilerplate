@@ -1,6 +1,5 @@
-.DS_STORE
+**/.DS_Store
 *.log
 node_modules/
 dist/
-coverage/
-js-coverage/
+js_coverage/

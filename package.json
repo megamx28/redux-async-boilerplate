@@ -10,7 +10,7 @@
     "test": "karma start",
     "test:watch": "watch 'npm run test' ./tests/",
     "compile": "NODE_ENV=production webpack -p --config webpack.prod.config.js",
-    "deploy": "npm run clean && npm run compile"
+    "deploy": "npm run test && npm run clean && npm run compile"
   },
   "repository": {
     "type": "git",
