@@ -12,7 +12,7 @@ module.exports = {
 
     output: {
         path: __dirname + '/dist',
-        filename: "bundle.js",
+        filename: 'bundle.js',
         publicPath: 'http://localhost:3000/static/'
     },
 
