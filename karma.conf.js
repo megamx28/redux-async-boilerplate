@@ -33,6 +33,7 @@ module.exports = function(config) {
         coverageReporter: {
             dir : 'js_coverage/',
             reporters: [
+                { type : 'text-summary' },
                 { type: 'html', subdir: 'html' }
             ]
         }
