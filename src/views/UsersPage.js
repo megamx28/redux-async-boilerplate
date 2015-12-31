@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import { bindActionCreators }          from 'redux'
 import { connect }                     from 'react-redux'
 import UserActions                     from '../actions/users'
+import List                            from '../components/List/List'
 
 class UsersPage extends Component {
     propTypes: {
@@ -11,22 +12,10 @@ class UsersPage extends Component {
 
     constructor(props) {
         super(props)
-
-        this.renderUsers = this.renderUsers.bind(this)
     }
 
     componentWillMount() {
         this.props.actions.loadUsers()
-    }
-
-    renderUsers() {
-        return (
-            <ol>
-                {this.props.users.map((user, index) => {
-                    return <li key={index}>{user.name}</li>
-                })}
-            </ol>
-        )
     }
 
     render() {
@@ -40,7 +29,7 @@ class UsersPage extends Component {
 
         return (
             <div>
-                {this.renderUsers()}
+                <List items={this.props.users} displayKey="name" />
             </div>
         )
     }
