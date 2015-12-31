@@ -8,7 +8,7 @@ const RedBox = require('redbox-react')
 const store = configureStore()
 const root = document.getElementById('root')
 
-if (__DEV__) {
+if (process.env.NODE_ENV) {
 	try {
 		render( <Root store={store} />, root)
 	} catch (e) {
