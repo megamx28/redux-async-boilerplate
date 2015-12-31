@@ -2,6 +2,8 @@ var path = require('path')
 var webpack = require('webpack')
 
 module.exports = {
+    env : process.env.NODE_ENV,
+    
     devtool: 'cheap-module-eval-source-map',
 
     context: __dirname,
