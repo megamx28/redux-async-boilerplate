@@ -2,7 +2,7 @@ import * as Constants from '../constants/users'
 
 function fetchUsers () {
     return {
-        type: Constants.USERS_REQUEST,
+        type: Constants.default.USERS_REQUEST,
         payload: {
             endpoint: 'users'
         }
@@ -22,7 +22,7 @@ export default {
 
     resetErrorMessage: () => {
         return {
-            type: Constants.RESET_ERROR_MESSAGE
+            type: Constants.default.RESET_ERROR_MESSAGE
         }
     }
 }
