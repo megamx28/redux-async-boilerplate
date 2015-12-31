@@ -7,11 +7,11 @@ const initialState = {
 }
 
 export default createReducer(initialState, {
-    [Constants.USERS_REQUEST]: (state, action) => {
+    [Constants.default.USERS_REQUEST]: (state, action) => {
         return state
     },
 
-    [Constants.USERS_REQUEST_SUCCESS]: (state, action) => {
+    [Constants.default.USERS_REQUEST_SUCCESS]: (state, action) => {
         if (action) {
             return state.users.concat(action)
         }
@@ -19,7 +19,7 @@ export default createReducer(initialState, {
         return state
     },
 
-    [Constants.USERS_REQUEST_FAILURE]: (state, action) => {
+    [Constants.default.USERS_REQUEST_FAILURE]: (state, action) => {
         return state
     }
 })
