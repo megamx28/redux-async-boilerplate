@@ -1,6 +1,6 @@
 # List
 
-This component will display a <ol/> HTML list
+This component will display a ol HTML list
 
 ## Props
 
