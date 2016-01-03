@@ -2,36 +2,35 @@ const path = require('path')
 const config = require('./webpack.base.config')
 const webpack = require('webpack')
 
-const debug = require('debug')('app:webpack:production')
-debug('Reading Production Config.')
+const debug = require('debug')('app:webpack:hot')
+debug('Reading Hot Config.')
+
+config.entry.push(
+	'webpack-dev-server/client?http://localhost:3000',
+    'webpack/hot/only-dev-server'
+)
 
 config.output = {
-    path: __dirname + '/dist',
+    path: __dirname + '/../src/dist',
     filename: 'bundle.js',
     publicPath: 'http://localhost:3000/static/'
 }
 
 config.plugins.push(
-    new webpack.optimize.UglifyJsPlugin({
-        compress: {
-            warnings: false,
-        },
-    })
+    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoErrorsPlugin()
 )
-
-debug('Source maps enabled for production.')
-config.devtool = 'source-maps'
 
 config.module.loaders.push(
 	{
         test: /\.(js|jsx)$/,
         loaders: ['babel'],
-        exclude: /node_modules/,
-        include: __dirname,
+        exclude: /node_modules/
     },
     {
         test: /\.scss$/,
-        include: __dirname,
+        exclude: /node_modules/,
         loaders: [
             'style-loader',
             'css-loader',

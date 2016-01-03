@@ -1,4 +1,4 @@
-var webpackConfig = require('./../webpack.prod.config');
+var webpackConfig = require('./../config/webpack.prod.config');
 webpackConfig.devtool = 'inline-source-map';
 
 module.exports = function(config) {
@@ -7,7 +7,7 @@ module.exports = function(config) {
         singleRun: true,
         frameworks: ['mocha', 'chai', 'sinon', 'sinon-chai'],
         files: [
-            './../tests.webpack.js'
+            './../tests/tests.webpack.js'
         ],
         plugins: [
             'karma-babel-preprocessor',
@@ -22,7 +22,7 @@ module.exports = function(config) {
             'karma-coverage'
         ],
         preprocessors: {
-            './../tests.webpack.js': ['webpack', 'sourcemap']
+            './../tests/tests.webpack.js': ['webpack', 'sourcemap']
         },
         reporters: ['mocha', 'coverage'],
         webpack: webpackConfig,
@@ -31,7 +31,7 @@ module.exports = function(config) {
         },
         autoWatch: true,
         coverageReporter: {
-            dir : 'coverage/',
+            dir : './../coverage/',
             reporters: [
                 { type : 'text-summary' },
                 { type: 'html', subdir: 'html' }

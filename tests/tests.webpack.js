@@ -1,4 +1,4 @@
-var context = require.context('./tests', true, /.+\.spec\.jsx?$/);
+var context = require.context('./', true, /.+\.spec\.jsx?$/);
 
 require('core-js/es5');
 

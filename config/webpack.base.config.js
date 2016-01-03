@@ -13,11 +13,11 @@ const config = {
     context: __dirname,
 
     entry: [
-        __dirname + '/src/index.jsx'
+        __dirname + '/../src/index.jsx'
     ],
 
     output: {
-        path: __dirname + '/dist',
+        path: __dirname + '/../dist',
         filename: 'bundle.js',
         publicPath: 'http://localhost:3000/static/'
     },
