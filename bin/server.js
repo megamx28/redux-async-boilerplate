@@ -1,6 +1,6 @@
 var webpack = require('webpack')
 var WebpackDevServer = require('webpack-dev-server')
-var config = require('./../webpack.hot.config')
+var config = require('./../config/webpack.hot.config')
 
 const debug = require('debug')('app:server')
 
