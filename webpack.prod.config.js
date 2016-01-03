@@ -11,6 +11,14 @@ config.output = {
     publicPath: 'http://localhost:3000/static/'
 }
 
+config.plugins.push(
+    new webpack.optimize.UglifyJsPlugin({
+        compress: {
+            warnings: false,
+        },
+    })
+)
+
 debug('Source maps enabled for production.')
 config.devtool = 'source-maps'
 
