@@ -4,14 +4,26 @@ import { ReduxRouter }                 from 'redux-router'
 import DevTools                        from './DevTools'
 
 export default class Root extends Component {
-    render() {
+    constructor (props) {
+        super(props)
+
+        this.renderDevTools = this.renderDevTools.bind(this)
+    }
+
+    renderDevTools () {
+        if (__DEBUG__) {
+            return <DevTools />
+        }
+    }
+
+    render () {
         const { store } = this.props
 
         return (
             <Provider store={store}>
                 <div>
                     <ReduxRouter />
-                    <DevTools />
+                    {this.renderDevTools()}
                 </div>
             </Provider>
         )
