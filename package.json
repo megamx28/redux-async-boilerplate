@@ -4,7 +4,7 @@
   "description": "Redux Async Boilerplate",
   "scripts": {
     "start": "npm run dev",
-    "dev": "node -r dotenv/config server.js",
+    "dev": "node -r dotenv/config ./bin/server.js",
     "dev:no-debug": "npm run dev -- --no_debug",
     "lint": "eslint ./src/ --ext .js --ext .jsx",
     "lint:fix": "npm run lint -- --fix",
