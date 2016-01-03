@@ -8,10 +8,10 @@
     "dev:no-debug": "npm run dev -- --no_debug",
     "lint": "eslint ./src/ --ext .js --ext .jsx",
     "lint:fix": "npm run lint -- --fix",
-    "test": "NODE_ENV=production ./node_modules/karma/bin/karma start",
+    "test": "NODE_ENV=production karma start ./bin/karma.js",
     "test:watch": "watch 'npm run test' ./tests/",
     "clean": "rimraf ./dist",
-    "compile": "NODE_ENV=production DEBUG=app:* webpack -p --config webpack.prod.config.js --progress --colors",
+    "compile": "NODE_ENV=production DEBUG=app:* webpack -p --config webpack.prod.config.js --progress",
     "deploy": "npm run test && npm run clean && npm run compile"
   },
   "repository": {
