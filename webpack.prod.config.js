@@ -2,11 +2,17 @@ const path = require('path')
 const config = require('./webpack.base.config')
 const webpack = require('webpack')
 
+const debug = require('debug')('app:webpack:production')
+debug('Reading Production Config.')
+
 config.output = {
     path: __dirname + '/dist',
     filename: 'bundle.js',
     publicPath: 'http://localhost:3000/static/'
 }
+
+debug('Source maps enabled for production.')
+config.devtool = 'source-maps'
 
 config.module.loaders.push(
 	{

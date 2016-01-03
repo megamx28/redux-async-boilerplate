@@ -2,6 +2,9 @@ const path = require('path')
 const config = require('./webpack.base.config')
 const webpack = require('webpack')
 
+const debug = require('debug')('app:webpack:hot')
+debug('Reading Hot Config.')
+
 config.entry.push(
 	'webpack-dev-server/client?http://localhost:3000',
     'webpack/hot/only-dev-server'
@@ -13,11 +16,11 @@ config.output = {
     publicPath: 'http://localhost:3000/static/'
 }
 
-config.plugins = [
+config.plugins.push(
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin()
-]
+)
 
 config.module.loaders.push(
 	{

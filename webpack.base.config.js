@@ -1,9 +1,13 @@
 var path = require('path')
 var webpack = require('webpack')
+var argv = require('yargs').argv
 
-module.exports = {
+const debug = require('debug')('app:webpack:base')
+debug('Reading Base Config.')
+
+const config = {
     env : process.env.NODE_ENV,
-    
+
     devtool: 'cheap-module-eval-source-map',
 
     context: __dirname,
@@ -17,12 +21,6 @@ module.exports = {
         filename: 'bundle.js',
         publicPath: 'http://localhost:3000/static/'
     },
-
-    plugins: [
-        new webpack.optimize.OccurenceOrderPlugin(),
-        new webpack.HotModuleReplacementPlugin(),
-        new webpack.NoErrorsPlugin()
-    ],
 
     resolve: {
         extensions: ['', '.js', '.jsx']
@@ -39,3 +37,19 @@ module.exports = {
         }]
     }
 }
+
+config.globals = {
+    'process.env': {
+        'NODE_ENV': JSON.stringify(config.env)
+    },
+    '__DEV__': config.env === 'development',
+    '__PROD__': config.env === 'production',
+    '__DEBUG__': config.env === 'development' && !argv.no_debug
+}
+
+
+config.plugins = [
+    new webpack.DefinePlugin(config.globals)
+]
+
+module.exports = config

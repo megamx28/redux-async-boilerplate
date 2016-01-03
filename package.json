@@ -3,10 +3,12 @@
   "version": "0.0.0",
   "description": "Redux Async Boilerplate",
   "scripts": {
-    "dev": "node server.js",
+    "start": "npm run dev",
+    "dev": "node -r dotenv/config server.js",
+    "dev:no-debug": "npm run dev -- --no_debug",
     "lint": "eslint ./src/ --ext .js --ext .jsx",
     "lint:fix": "npm run lint -- --fix",
-    "test": "karma start",
+    "test": "NODE_ENV=production ./node_modules/karma/bin/karma start",
     "test:watch": "watch 'npm run test' ./tests/",
     "clean": "rimraf ./dist",
     "compile": "NODE_ENV=production webpack -p --config webpack.prod.config.js",
@@ -24,6 +26,7 @@
   "dependencies": {
     "classnames": "^2.2.1",
     "debug": "^2.2.0",
+    "dotenv": "^1.2.0",
     "history": "1.17.0",
     "humps": "1.0.0",
     "immutable": "^3.7.5",
@@ -38,7 +41,8 @@
     "redux-logger": "^2.0.2",
     "redux-router": "^1.0.0-beta3",
     "redux-thunk": "1.0.2",
-    "whatwg-fetch": "^0.10.1"
+    "whatwg-fetch": "^0.10.1",
+    "yargs": "^3.31.0"
   },
   "devDependencies": {
     "babel-core": "6.3.26",
