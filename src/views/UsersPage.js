@@ -5,10 +5,10 @@ import UserActions                     from '../actions/users'
 import List                            from '../components/List/List'
 
 class UsersPage extends Component {
-    propTypes: {
+    static propTypes: {
         actions: React.PropTypes.object,
         users: PropTypes.object
-    }
+    };
 
     constructor(props) {
         super(props)
