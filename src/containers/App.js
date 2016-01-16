@@ -4,7 +4,7 @@ import { pushState }                   from 'redux-router'
 import { resetErrorMessage }           from '../actions/users'
 
 class App extends Component {
-    propTypes: {
+    static propTypes: {
         // Injected by React Redux
         errorMessage: PropTypes.string,
         resetErrorMessage: PropTypes.func.isRequired,
@@ -12,7 +12,7 @@ class App extends Component {
 
         // Injected by React Router
         children: PropTypes.node
-    }
+    };
 
     constructor(props) {
         super(props)
