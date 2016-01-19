@@ -2,7 +2,7 @@ var webpack = require('webpack');
 
 module.exports = function(config) {
     config.set({
-        browsers: [process.env.CONTINUOUS_INTEGRATION ? 'Firefox' : 'Chrome'],
+        browsers: [process.env.CONTINUOUS_INTEGRATION ? 'Firefox' : 'PhantomJS'],
         // Just run once by default
         singleRun: true,
         // Use the mocha test framework
