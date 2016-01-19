@@ -2,7 +2,7 @@ var webpack = require('webpack');
 
 module.exports = function(config) {
     config.set({
-        browsers: ['Chrome'],
+        browsers: [process.env.CONTINUOUS_INTEGRATION ? 'Firefox' : 'Chrome'],
         // Just run once by default
         singleRun: true,
         // Use the mocha test framework
@@ -12,6 +12,7 @@ module.exports = function(config) {
         ],
         plugins: [
             'karma-chrome-launcher',
+            'karma-firefox-launcher',
             'karma-phantomjs-launcher',
             'karma-chai',
             'karma-mocha',
