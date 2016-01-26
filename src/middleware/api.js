@@ -1,5 +1,4 @@
 import { getRequestHeaders } from '../utils'
-
 import 'whatwg-fetch'
 
 const API_ROOT = 'http://jsonplaceholder.typicode.com/'
