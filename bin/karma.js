@@ -39,7 +39,7 @@ module.exports = function(config) {
                 // Delays coverage til after tests are run, fixing transpiled source coverage error
                 postLoaders: [{
                     test: /\.js$/,
-                    exclude: /(test|node_modules)\//,
+                    exclude: /(tests|node_modules)\//,
                     loader: 'istanbul-instrumenter'
                 }]
             }
