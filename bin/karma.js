@@ -1,4 +1,8 @@
 var webpack = require('webpack');
+var argv = require('yargs').argv;
+
+var reporters = ['mocha'];
+if (argv.coverage) reporters.push('coverage');
 
 module.exports = function(config) {
     config.set({
@@ -26,7 +30,7 @@ module.exports = function(config) {
             './../tests/tests.webpack.js': ['webpack', 'sourcemap']
         },
         // Report results in this format
-        reporters: ['mocha', 'coverage'],
+        reporters: reporters,
         webpack: {
             // Just do inline source maps instead of the default
             devtool: 'inline-source-map',
