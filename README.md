@@ -3,6 +3,7 @@
 [![build status](https://img.shields.io/travis/shanedasilva/redux-async-boilerplate/master.svg?style=flat-square)](https://travis-ci.org/shanedasilva/redux-async-boilerplate)
 [![dependencies](https://david-dm.org/shanedasilva/redux-async-boilerplate.svg)](https://david-dm.org/shanedasilva/redux-async-boilerplate)
 [![devDependency Status](https://david-dm.org/shanedasilva/redux-async-boilerplate/dev-status.svg)](https://david-dm.org/shanedasilva/redux-async-boilerplate#info=devDependencies)
+[![Coverage Status](https://coveralls.io/repos/github/shanedasilva/redux-async-boilerplate/badge.svg?branch=master)](https://coveralls.io/github/shanedasilva/redux-async-boilerplate?branch=master)
 
 React Redux Async Boilerplate is a starter app designed to support small to midsized production apps. By starting with a complete build and test environment, you can focus what matters, which is building you application.
 
