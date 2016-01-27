@@ -1,4 +1,4 @@
-import { getRequestHeaders } from '../utils'
+import { serialiseObj, getRequestHeaders } from '../utils'
 import 'isomorphic-fetch'
 
 const API_ROOT = 'http://jsonplaceholder.typicode.com/'
@@ -14,18 +14,6 @@ function callApi({ endpoint, method, data }, successCallback, errorCallback) {
         .then(response => response.json())
         .then(successCallback)
         .catch(errorCallback)
-}
-
-function serialiseObj(obj) {
-    let str = []
-
-    for (var p in obj) {
-        if (obj.hasOwnProperty(p)) {
-            str.push(encodeURIComponent(p) + '=' + encodeURIComponent(obj[p]))
-        }
-    }
-
-    return str.join('&')
 }
 
 export const CALL_API = Symbol('Call API')

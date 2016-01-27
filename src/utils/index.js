@@ -12,6 +12,17 @@ export function createReducer(initialState, fnMap) {
     }
 }
 
+export function serialiseObj(obj) {
+    let str = []
+    for (var p in obj) {
+        if (obj.hasOwnProperty(p)) {
+            str.push(encodeURIComponent(p) + '=' + encodeURIComponent(obj[p]))
+        }
+    }
+
+    return str.join('&')
+}
+
 export function getRequestHeaders() {
     return {
         'Content-Type': 'application/x-www-form-urlencoded'

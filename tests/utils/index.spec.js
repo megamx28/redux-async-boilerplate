@@ -1,6 +1,7 @@
 import {
     createConstants,
     createReducer,
+    serialiseObj,
     getRequestHeaders
 } from './../../src/utils'
 
@@ -53,6 +54,15 @@ describe('Utils', () => {
             const reducer = createReducer({someObj: 1}, reducerMap)
             const state = reducer(undefined, {})
             expect(reducer(state, {type: 'YOLO'})).to.deep.equal({someObj: 2})
+        })
+    })
+
+    describe('serialiseObj', () => {
+        it('serializes an object into a query string', () => {
+            const obj = {foo: 'hi there', bar: '100%' }
+            const serializedObj = serialiseObj(obj)
+
+            expect(serializedObj).to.equal('foo=hi%20there&bar=100%25')
         })
     })
 
