@@ -71,7 +71,8 @@ describe('Utils', () => {
             const headers = getRequestHeaders()
 
             expect(headers).to.deep.equal({
-                'Content-Type': 'application/x-www-form-urlencoded'
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'credentials': 'same-origin'
             })
         })
     })
