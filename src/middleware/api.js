@@ -1,5 +1,5 @@
 import { getRequestHeaders } from '../utils'
-import 'whatwg-fetch'
+import 'isomorphic-fetch'
 
 const API_ROOT = 'http://jsonplaceholder.typicode.com/'
 
@@ -9,28 +9,44 @@ function callApi({ endpoint, method, data }, successCallback, errorCallback) {
     fetch(fullUrl, {
         method: method || 'GET',
         headers: getRequestHeaders(),
-        body: data ? JSON.stringify(data) : undefined
+        body: data ? serialiseObj(data) : undefined
     })
         .then(response => response.json())
         .then(successCallback)
         .catch(errorCallback)
 }
 
+function serialiseObj(obj) {
+    let str = []
+
+    for (var p in obj) {
+        if (obj.hasOwnProperty(p)) {
+            str.push(encodeURIComponent(p) + '=' + encodeURIComponent(obj[p]))
+        }
+    }
+
+    return str.join('&')
+}
+
+export const CALL_API = Symbol('Call API')
+
 export default store => dispatch => action => {
-    if (!action.payload || !action.payload.endpoint) {
+    const callAPI = action[CALL_API]
+
+    if (typeof callAPI === 'undefined') {
         return dispatch(action)
     }
 
-    const { type } = action
-    const { endpoint, method, data } = action.payload
+    const {endpoint, method, data, types} = callAPI
+    const [requestType, successType, failureType] = types
 
-    dispatch({type: type})
+    dispatch({type: requestType})
 
     return callApi({endpoint, method, data}, payload => dispatch({
-        type: type + '_SUCCESS',
+        type: successType,
         payload
     }), err => dispatch({
-        type: type + '_ERROR',
+        type: failureType,
         error: err.message || 'Unknown',
         status: (err.response && err.response.status) || 0
     }))

@@ -58,12 +58,10 @@ describe('Utils', () => {
 
     describe('getRequestHeaders', () => {
         it('returns the expected headers array', () => {
-            const token = btoa('username' + ':' + 'password')
             const headers = getRequestHeaders()
 
             expect(headers).to.deep.equal({
-                Authorization: 'Basic ' + token,
-                Accept: 'application/json'
+                'Content-Type': 'application/x-www-form-urlencoded'
             })
         })
     })

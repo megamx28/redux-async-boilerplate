@@ -1,5 +1,3 @@
-const token = btoa('username' + ':' + 'password')
-
 export function createConstants(...constants) {
     return constants.reduce((acc, constant) => {
         acc[constant] = constant
@@ -16,7 +14,6 @@ export function createReducer(initialState, fnMap) {
 
 export function getRequestHeaders() {
     return {
-        Authorization: 'Basic ' + token,
-        Accept: 'application/json'
+        'Content-Type': 'application/x-www-form-urlencoded'
     }
 }
