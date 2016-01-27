@@ -1,22 +1,19 @@
 import * as Constants from '../constants/users'
-
-function fetchUsers () {
-    return {
-        type: Constants.default.USERS_REQUEST,
-        payload: {
-            endpoint: 'users'
-        }
-    }
-}
+import { CALL_API }   from '../middleware/api'
 
 export default {
     loadUsers: () => {
-        return (dispatch, getState) => {
-            if (getState().users.size) {
-                return null
+        return {
+            [CALL_API]: {
+                types: [
+                    Constants.default.USERS_REQUEST,
+                    Constants.default.USERS_REQUEST_SUCCESS,
+                    Constants.default.USERS_REQUEST_FAILURE
+                ],
+                endpoint: 'users',
+                method: 'get',
+                data: ''
             }
-
-            return dispatch(fetchUsers())
         }
     },
 

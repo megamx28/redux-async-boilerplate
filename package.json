@@ -31,6 +31,7 @@
     "history": "1.17.0",
     "humps": "1.0.0",
     "immutable": "^3.7.5",
+    "isomorphic-fetch": "^2.2.1",
     "lodash": "4.0.1",
     "normalizr": "2.0.0",
     "react": "^0.14.3",
@@ -42,7 +43,6 @@
     "redux-logger": "^2.0.2",
     "redux-router": "^1.0.0-beta3",
     "redux-thunk": "1.0.3",
-    "whatwg-fetch": "0.11.0",
     "yargs": "^3.31.0"
   },
   "devDependencies": {

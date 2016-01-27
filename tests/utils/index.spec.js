@@ -1,6 +1,7 @@
 import {
     createConstants,
     createReducer,
+    serialiseObj,
     getRequestHeaders
 } from './../../src/utils'
 
@@ -56,14 +57,22 @@ describe('Utils', () => {
         })
     })
 
+    describe('serialiseObj', () => {
+        it('serializes an object into a query string', () => {
+            const obj = {foo: 'hi there', bar: '100%' }
+            const serializedObj = serialiseObj(obj)
+
+            expect(serializedObj).to.equal('foo=hi%20there&bar=100%25')
+        })
+    })
+
     describe('getRequestHeaders', () => {
         it('returns the expected headers array', () => {
-            const token = btoa('username' + ':' + 'password')
             const headers = getRequestHeaders()
 
             expect(headers).to.deep.equal({
-                Authorization: 'Basic ' + token,
-                Accept: 'application/json'
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'credentials': 'same-origin'
             })
         })
     })

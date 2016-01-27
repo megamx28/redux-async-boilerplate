@@ -1,5 +1,3 @@
-const token = btoa('username' + ':' + 'password')
-
 export function createConstants(...constants) {
     return constants.reduce((acc, constant) => {
         acc[constant] = constant
@@ -14,9 +12,20 @@ export function createReducer(initialState, fnMap) {
     }
 }
 
+export function serialiseObj(obj) {
+    let str = []
+    for (let p in obj) {
+        if (obj.hasOwnProperty(p)) {
+            str.push(encodeURIComponent(p) + '=' + encodeURIComponent(obj[p]))
+        }
+    }
+
+    return str.join('&')
+}
+
 export function getRequestHeaders() {
     return {
-        Authorization: 'Basic ' + token,
-        Accept: 'application/json'
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'credentials': 'same-origin'
     }
 }
