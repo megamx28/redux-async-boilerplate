@@ -1,5 +1,5 @@
 import * as Constants from '../constants/users'
-import { CALL_API }   from '../middleware/api'
+import CALL_API       from '../middleware/api'
 
 export default {
     loadUsers: () => {
@@ -10,9 +10,7 @@ export default {
                     Constants.default.USERS_REQUEST_SUCCESS,
                     Constants.default.USERS_REQUEST_FAILURE
                 ],
-                endpoint: 'users',
-                method: 'get',
-                data: ''
+                endpoint: 'users'
             }
         }
     },

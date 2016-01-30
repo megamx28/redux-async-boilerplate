@@ -1,4 +1,5 @@
-import { serialiseObj, getRequestHeaders } from '../utils'
+import { serialiseObj, getRequestHeaders, isRSAA, normalizeRSAARequest } from '../utils'
+import CALL_API                            from '../middleware/api'
 import 'isomorphic-fetch'
 
 const API_ROOT = 'http://jsonplaceholder.typicode.com/'
@@ -9,23 +10,21 @@ function callApi({ endpoint, method, data }, successCallback, errorCallback) {
     fetch(fullUrl, {
         method: method || 'GET',
         headers: getRequestHeaders(),
-        body: data ? serialiseObj(data) : undefined
+        body: data ? serialiseObj(data) : null
     })
         .then(response => response.json())
         .then(successCallback)
         .catch(errorCallback)
 }
 
-export const CALL_API = Symbol('Call API')
-
 export default store => dispatch => action => {
     const callAPI = action[CALL_API]
 
-    if (typeof callAPI === 'undefined') {
+    if (!isRSAA(action)) {
         return dispatch(action)
     }
 
-    const {endpoint, method, data, types} = callAPI
+    const {endpoint, method, data, types} = normalizeRSAARequest(callAPI)
     const [requestType, successType, failureType] = types
 
     dispatch({type: requestType})
