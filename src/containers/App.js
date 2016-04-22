@@ -31,15 +31,14 @@ class App extends Component {
     }
 
     renderErrorMessage() {
-        const { errorMessage } = this.props
-        if (!errorMessage) {
+        if (!this.props.errorMessage) {
             return null
         }
 
         return (
             <p style={{ backgroundColor: '#e99', padding: 10 }}>
-                <b>{errorMessage}</b>
-                {' '}
+                <b>{this.props.errorMessage}</b>
+
                 (<a href="#" onClick={this.handleDismissClick}>
                     Dismiss
                 </a>)
@@ -48,11 +47,10 @@ class App extends Component {
     }
 
     render() {
-        const { children } = this.props
         return (
             <div>
                 {this.renderErrorMessage()}
-                {children}
+                {this.props.children}
             </div>
         )
     }

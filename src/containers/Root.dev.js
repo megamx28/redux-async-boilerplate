@@ -17,10 +17,8 @@ export default class Root extends Component {
     }
 
     render () {
-        const { store } = this.props
-
         return (
-            <Provider store={store}>
+            <Provider store={this.props.store}>
                 <div>
                     <ReduxRouter />
                     {this.renderDevTools()}

@@ -14,7 +14,7 @@ const finalCreateStore = compose(
         routes,
         createHistory
     }),
-    applyMiddleware(createLogger()),
+    // applyMiddleware(createLogger()),
     DevTools.instrument()
 )(createStore)
 
