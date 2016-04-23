@@ -1,7 +1,7 @@
 import {  createStore, applyMiddleware, compose } from 'redux'
 import { reduxReactRouter }                       from 'redux-router'
 import DevTools                                   from '../containers/DevTools'
-import createHistory                              from 'history/lib/createBrowserHistory'
+import { browserHistory }                         from 'react-router'
 import routes                                     from '../routes'
 import thunk                                      from 'redux-thunk'
 import api                                        from '../middleware/api'
@@ -12,7 +12,7 @@ const finalCreateStore = compose(
     applyMiddleware(thunk, api),
     reduxReactRouter({
         routes,
-        createHistory
+        browserHistory
     }),
     // applyMiddleware(createLogger()),
     DevTools.instrument()
