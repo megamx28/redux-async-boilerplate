@@ -6,7 +6,7 @@ if (argv.coverage) reporters.push('coverage');
 
 module.exports = function(config) {
     config.set({
-        browsers: [process.env.CONTINUOUS_INTEGRATION ? 'Firefox' : 'PhantomJS'],
+        browsers: [process.env.CONTINUOUS_INTEGRATION ? 'Firefox' : 'Chrome'],
         // Just run once by default
         singleRun: true,
         // Use the mocha test framework

@@ -42,7 +42,6 @@
     "react-router": "2.3.0",
     "redux": "^3.0.5",
     "redux-logger": "^2.0.2",
-    "redux-router": "^1.0.0-beta3",
     "redux-thunk": "2.0.1",
     "yargs": "4.6.0"
   },

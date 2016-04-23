@@ -1,5 +1,5 @@
 import isPlainObject from 'lodash.isplainobject'
-import CALL_API      from '../middleware/api'
+import CALL_API      from '../constants/callApi'
 
 export function createConstants(...constants) {
     return constants.reduce((acc, constant) => {
@@ -17,6 +17,7 @@ export function createReducer(initialState, fnMap) {
 
 export function serialiseObj(obj) {
     let str = []
+
     for (let p in obj) {
         if (obj.hasOwnProperty(p)) {
             str.push(encodeURIComponent(p) + '=' + encodeURIComponent(obj[p]))
@@ -29,7 +30,11 @@ export function serialiseObj(obj) {
 export function getRequestHeaders() {
     return {
         'Content-Type': 'application/x-www-form-urlencoded',
-        'credentials': 'same-origin'
+        'credentials': 'same-origin',
+        'headers': {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'X-CSRF-TOKEN': getCookie('XSRF-TOKEN')
+        }
     }
 }
 
@@ -42,8 +47,8 @@ export function normalizeRSAARequest(obj) {
 
     if (validateRSAARequest(obj)) {
         for (let optionalKey in optionalTypes) {
-            if(!obj.hasOwnProperty(optionalTypes[optionalKey])) {
-                obj[optionalKey] = null
+            if (!obj.hasOwnProperty(optionalTypes[optionalKey])) {
+                obj[optionalTypes[optionalKey]] = null
             }
         }
     }
@@ -51,11 +56,11 @@ export function normalizeRSAARequest(obj) {
     return obj
 }
 
-function validateRSAARequest(obj) {
+export function validateRSAARequest(obj) {
     const requiredTypes = ['types', 'endpoint']
 
     for (let requiredKey in requiredTypes) {
-        if(!obj.hasOwnProperty(requiredTypes[requiredKey])) {
+        if (!obj.hasOwnProperty(requiredTypes[requiredKey])) {
             throw new Error('Expected a ' + requiredTypes[requiredKey] + ' key.')
         }
     }
@@ -65,4 +70,23 @@ function validateRSAARequest(obj) {
     }
 
     return true
+}
+
+export function getCookie(name) {
+    let nameEQ = name + '='
+    let ca = document.cookie.split(';')
+
+    for (let i=0; i < ca.length; i++) {
+        let c = ca[i]
+
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1,c.length)
+        }
+
+        if (c.indexOf(nameEQ) == 0) {
+            return c.substring(nameEQ.length, c.length)
+        }
+    }
+
+    return null
 }
