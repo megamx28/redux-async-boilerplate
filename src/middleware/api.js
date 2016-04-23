@@ -1,5 +1,5 @@
 import { serialiseObj, getRequestHeaders, isRSAA, normalizeRSAARequest } from '../utils'
-import CALL_API                            from '../middleware/api'
+import CALL_API from '../constants/callApi'
 import 'isomorphic-fetch'
 
 const API_ROOT = 'http://jsonplaceholder.typicode.com/'

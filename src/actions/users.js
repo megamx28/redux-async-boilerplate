@@ -1,5 +1,5 @@
 import * as Constants from '../constants/users'
-import CALL_API       from '../middleware/api'
+import CALL_API       from '../constants/callApi'
 
 export default {
     loadUsers: () => {
