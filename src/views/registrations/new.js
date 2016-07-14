@@ -3,7 +3,7 @@ import { connect }          from 'react-redux';
 import { Link }             from 'react-router';
 
 import { setDocumentTitle, renderErrorsFor } from '../../utils';
-import Actions              from '../../actions/registrations';
+import Actions from '../../actions/registrations';
 
 class RegistrationsNew extends React.Component {
   componentDidMount() {

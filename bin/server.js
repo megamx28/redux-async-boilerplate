@@ -7,16 +7,16 @@ const debug = require('debug')('app:server')
 debug('Creating Webpack Dev Server.')
 
 new WebpackDevServer(webpack(config), {
-    publicPath: config.output.publicPath,
-    hot: true,
-    quiet: false,
-    colors: true,
-    stats: { colors: true },
-    historyApiFallback: true
+  publicPath: config.output.publicPath,
+  hot: true,
+  quiet: false,
+  colors: true,
+  stats: { colors: true },
+  historyApiFallback: true
 }).listen(3000, 'localhost', function (err, result) {
-    if (err) {
-        debug('There was an error creating Webpack Dev Server: ' + err)
-    }
+  if (err) {
+    debug('There was an error creating Webpack Dev Server: ' + err)
+  }
 
-    debug('Listening at localhost:3000')
+  debug('Listening at localhost:3000')
 })

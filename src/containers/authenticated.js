@@ -2,7 +2,6 @@ import React       from 'react';
 import { connect } from 'react-redux';
 
 class AuthenticatedContainer extends React.Component {
-
   render() {
     return (
       <div id="authentication-container" className="application-container">
@@ -12,7 +11,6 @@ class AuthenticatedContainer extends React.Component {
       </div>
     );
   }
-
 }
 
 const mapStateToProps = (state) => ({
