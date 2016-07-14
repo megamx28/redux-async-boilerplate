@@ -1,9 +1,9 @@
-const defaultHeaders = {
+export const defaultHeaders = {
   Accept: 'application/json',
   'Content-Type': 'application/json',
 };
 
-function buildHeaders() {
+export function buildHeaders() {
   const authToken = localStorage.getItem('token');
   return { ...defaultHeaders, Authorization: authToken };
 }
