@@ -4,8 +4,8 @@ export const defaultHeaders = {
 };
 
 export function buildHeaders() {
-  const authToken = localStorage.getItem('token');
-  return { ...defaultHeaders, Authorization: authToken };
+  const token = localStorage.getItem('token');
+  return { ...defaultHeaders, Authorization: token };
 }
 
 export function setDocumentTitle(title) {
@@ -18,7 +18,7 @@ export function renderErrorsFor(errors, ref) {
   return errors.map((error, i) => {
     if (error[ref]) {
       return (
-        <div key={i} className="error">
+        <div key={i} class="error">
           {error[ref]}
         </div>
       );
