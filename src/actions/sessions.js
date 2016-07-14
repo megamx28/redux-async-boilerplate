@@ -1,6 +1,7 @@
-import { push }     from 'react-router-redux';
-import Constants    from '../constants';
-import { CALL_API } from 'redux-api-middleware';
+import { push }     	  from 'react-router-redux';
+import { CALL_API } 	  from 'redux-api-middleware';
+import Constants    	  from '../constants';
+import { defaultHeaders } from '../utils';
 
 export default {
 	signIn: (email, password) => {
@@ -12,6 +13,7 @@ export default {
 					email: email,
 					password: password
 				},
+				headers: defaultHeaders,
 				types: ['REQUEST', 'SUCCESS', 'FAILURE']
 			}
 		}
@@ -22,6 +24,7 @@ export default {
 			[CALL_API]: {
 				endpoint: '/api/v1/current-user',
 				method: 'GET',
+				headers: defaultHeaders,
 				types: ['REQUEST', 'SUCCESS', 'FAILURE']
 			}
 		}
@@ -32,6 +35,7 @@ export default {
 			[CALL_API]: {
 				endpoint: '/api/v1/sessions',
 				method: 'DELETE',
+				headers: defaultHeaders,
 				types: ['REQUEST', 'SUCCESS', 'FAILURE']
 			}
 		}
