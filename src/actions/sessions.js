@@ -1,6 +1,6 @@
-import { push }     	  from 'react-router-redux';
-import { CALL_API } 	  from 'redux-api-middleware';
-import Constants    	  from '../constants';
+import { push }     	   from 'react-router-redux';
+import { CALL_API } 	   from 'redux-api-middleware';
+import Constants    	   from '../constants';
 import { defaultHeaders } from '../utils';
 
 export default {
