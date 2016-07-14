@@ -1,19 +1,14 @@
-import 'babel-polyfill'
-import React          from 'react'
-import { render }     from 'react-dom'
-import Root           from './containers/Root'
-import configureStore from './store/configureStore'
+import React                    from 'react';
+import ReactDOM                 from 'react-dom';
+import { browserHistory }       from 'react-router';
+import { syncHistoryWithStore } from 'react-router-redux';
+import configureStore           from './store';
+import Root                     from './containers/root';
 
-const RedBox = require('redbox-react')
-const store = configureStore()
-const root = document.getElementById('root')
+const store = configureStore(browserHistory);
+const history = syncHistoryWithStore(browserHistory, store);
 
-if (__DEV__) {
-	try {
-		render(<Root store={store} />, root)
-	} catch (e) {
-		render(<RedBox error={e} />, root)
-	}
-} else {
-	render(<Root store={store} />, root)
-}
+const target = document.getElementById('root');
+const node = <Root routerHistory={history} store={store} />;
+
+ReactDOM.render(node, target);

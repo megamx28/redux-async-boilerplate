@@ -1,6 +1,24 @@
 import isPlainObject from 'lodash.isplainobject'
 import CALL_API      from '../constants/callApi'
 
+export function setDocumentTitle(title) {
+  document.title = `${title} | React Starter`;
+}
+
+export function renderErrorsFor(errors, ref) {
+  if (!errors) return false;
+
+  return errors.map((error, i) => {
+    if (error[ref]) {
+      return (
+        <div key={i} className="error">
+          {error[ref]}
+        </div>
+      );
+    }
+  });
+}
+
 export function createConstants(...constants) {
     return constants.reduce((acc, constant) => {
         acc[constant] = constant
