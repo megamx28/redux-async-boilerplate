@@ -1,11 +1,14 @@
-export const defaultHeaders = {
-  Accept: 'application/json',
-  'Content-Type': 'application/json',
-};
+import isPlainObject from 'lodash.isplainobject';
+import CALL_API      from '../middleware/api/callApi';
 
-export function buildHeaders() {
-  const token = localStorage.getItem('token');
-  return { ...defaultHeaders, Authorization: token };
+export function getRequestHeaders() {
+  return {
+    'Content-Type': 'application/x-www-form-urlencoded',
+    'headers': {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer {' + localStorage.getItem('token') + '}'
+    }
+  };
 }
 
 export function setDocumentTitle(title) {
@@ -35,7 +38,41 @@ export function createConstants(...constants) {
 
 export function createReducer(initialState, fnMap) {
   return (state = initialState, { type, payload }) => {
-    const handler = fnMap[type]
-    return handler ? handler(state, payload) : state
+    const handler = fnMap[type];
+    return handler ? handler(state, payload) : state;
   }
+}
+
+export function isRSAA(action) {
+    return isPlainObject(action) && action.hasOwnProperty(CALL_API);
+}
+
+export function normalizeRSAARequest(obj) {
+    const optionalTypes = ['method', 'data'];
+
+    if (validateRSAARequest(obj)) {
+        for (let optionalKey in optionalTypes) {
+            if (!obj.hasOwnProperty(optionalTypes[optionalKey])) {
+                obj[optionalTypes[optionalKey]] = null;
+            }
+        }
+    }
+
+    return obj;
+}
+
+export function validateRSAARequest(obj) {
+    const requiredTypes = ['types', 'endpoint'];
+
+    for (let requiredKey in requiredTypes) {
+        if (!obj.hasOwnProperty(requiredTypes[requiredKey])) {
+            throw new Error('Expected a ' + requiredTypes[requiredKey] + ' key.');
+        }
+    }
+
+    if (obj['types'].length !== 3) {
+        throw new Error('Expected an array of three action types.');
+    }
+
+    return true;
 }

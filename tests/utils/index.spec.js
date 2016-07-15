@@ -1,7 +1,12 @@
+import CALL_API from './../../src/middleware/api/callApi';
 import {
   createConstants,
   createReducer,
-  buildHeaders,
+  serialiseObj,
+  getRequestHeaders,
+  isRSAA,
+  normalizeRSAARequest,
+  validateRSAARequest,
   setDocumentTitle,
   renderErrorsFor
 } from './../../src/utils';
@@ -58,24 +63,137 @@ describe('Utils', () => {
     });
   });
 
-  describe('buildHeaders', () => {
-    it('returns the expected request headers', () => {
+  describe('getRequestHeaders', () => {
+    it('returns the expected headers array', () => {
       localStorage.setItem('token', 'testToken');
 
-      var headers = buildHeaders();
+      const headers = getRequestHeaders();
 
       expect(headers).to.deep.equal({
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-        Authorization: 'testToken'
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'headers': {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer {' + localStorage.getItem('token') + '}'
+        }
       });
-    });
+    })
   });
 
   describe('setDocumentTitle', () => {
     it('sets the document header', () => {
       setDocumentTitle('Test Title');
       expect(document.title).to.equal('Test Title | React Starter');
+    });
+  });
+
+  describe('isRSAA', () => {
+    it('return true when passed and object with CALL_API key', () => {
+      const action = {
+        [CALL_API]: {
+          types: [],
+          endpoint: 'role/save/permissions'
+        }
+      };
+
+      expect(isRSAA(action)).to.equal(true);
+    });
+
+    it('return false when action does not have a CALL_API key', () => {
+      const action = {
+        types: [],
+        endpoint: 'role/save/permissions'
+      };
+
+      expect(isRSAA(action)).to.equal(false);
+    });
+
+    it('return false when action is not an object', () => {
+      const action = [{
+        [CALL_API]: {
+          types: [],
+          endpoint: 'role/save/permissions'
+        }
+      }];
+
+      expect(isRSAA(action)).to.equal(false);
+    });
+  });
+
+  describe('normalizeRSAARequest', () => {
+    it('returns action with optional types if they dont exist', () => {
+      const action = {
+        types: ['pending', 'success', 'failure'],
+        endpoint: 'role/save/permissions'
+      };
+      const normalizedRequest = normalizeRSAARequest(action);
+
+      expect(normalizedRequest).to.deep.equal({
+        types: ['pending', 'success', 'failure'],
+        endpoint: 'role/save/permissions',
+        method: null,
+        data: null
+      });
+  });
+
+    it('returns action with optional types if they dont exist', () => {
+      const action = {
+        types: ['pending', 'success', 'failure'],
+        endpoint: 'role/save/permissions',
+        method: 'POST',
+        data: {test: 'test'}
+      };
+      const normalizedRequest = normalizeRSAARequest(action);
+
+      expect(normalizedRequest).to.deep.equal({
+        types: ['pending', 'success', 'failure'],
+        endpoint: 'role/save/permissions',
+        method: 'POST',
+        data: {test: 'test'}
+      });
+    });
+  });
+
+  describe('validateRSAARequest', () => {
+    it('returns true if all required keys exist', () => {
+      const action = {
+        types: ['pending', 'success', 'failure'],
+        endpoint: 'role/save/permissions',
+        method: 'POST',
+        data: {test: 'test'}
+      };
+
+      expect(validateRSAARequest(action)).to.equal(true);
+    });
+
+    it('throws an error if types key doesnt exist', () => {
+      const action = {
+        types: ['pending', 'success', 'failure'],
+        method: 'POST',
+        data: {test: 'test'}
+      };
+
+      expect(() => validateRSAARequest(action)).to.throw();
+    });
+
+    it('throws an error if key types.length !== 3', () => {
+      const action = {
+        types: ['pending', 'success'],
+        endpoint: 'role/save/permissions',
+        method: 'POST',
+        data: {test: 'test'}
+      };
+
+      expect(() => validateRSAARequest(action)).to.throw();
+    });
+
+    it('throws an error if endpoint key doesnt exist', () => {
+      const action = {
+        endpoint: 'role/save/permissions',
+        method: 'POST',
+        data: {test: 'test'}
+      };
+
+      expect(() => validateRSAARequest(action)).to.throw();
     });
   });
 })
