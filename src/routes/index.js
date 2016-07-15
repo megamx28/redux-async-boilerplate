@@ -6,6 +6,8 @@ import RegistrationsNew       from '../views/registrations/new';
 import SessionsNew            from '../views/sessions/new';
 import UserIndexView          from '../views/user';
 
+import QuotesNew              from '../views/quotes/new';
+
 export default function configRoutes(store) {
   const _ensureAuthenticated = (nextState, replace, callback) => {
     const { dispatch } = store;
@@ -25,6 +27,8 @@ export default function configRoutes(store) {
     <Route component={MainLayout}>
       <Route path="/sign-up" component={RegistrationsNew} />
       <Route path="/sign-in" component={SessionsNew} />
+
+      <Route path="/quotes/new" component={QuotesNew} />
 
       <Route path="/" component={AuthenticatedContainer} onEnter={_ensureAuthenticated}>
         <IndexRoute component={UserIndexView} />

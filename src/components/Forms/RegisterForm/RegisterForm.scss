@@ -1,0 +1,83 @@
+body {
+  background-color: #fff;
+  font-size: 15px;
+  padding-top: 60px;
+  text-align: center;
+
+  @media only screen and (max-width: 480px) {
+    padding-top: 20px;
+  }
+}
+
+a,
+a:hover,
+a:active,
+a:focus {
+  color: #e50e15;
+}
+
+.auth-container {
+  max-width: 450px;
+  padding: 15px;
+  margin: 0 auto;
+ }
+
+.auth-container h1 {
+  color: #444;
+  display: block;
+  font-family: 'Pontano Sans', sans-serif;
+  margin-bottom: 30px;
+}
+
+.auth-container h1 + p {
+  color: #888;
+  margin: -20px 0 30px;
+}
+
+p {
+  color: #444;
+  margin-bottom: 10px;
+}
+
+.auth-container .form-control {
+  border: none;
+  border-bottom: solid 1px #444;
+  border-radius: 0;
+  box-shadow: none;
+  color: #444;
+  font-size: 15px;
+  margin-bottom: 20px;
+  outline: none;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.help-block {
+  color: #e50e15;
+  font-family: 'Pontano Sans', sans-serif;
+  font-size: 14px;
+  text-align: left;
+}
+
+.form-control + .help-block {
+  margin-top: -10px;
+}
+
+.auth-container .btn-primary {
+  background-color: #e50e15;
+  border-color: #e50e15;
+  font-family: 'Pontano Sans', sans-serif;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  outline: none;
+}
+
+.logo {
+  background-image: url(/images/scp-logo.svg);
+  background-size: cover;
+  display: block;
+  height: 70px;
+  text-indent: -9999px;
+  margin: 0 auto;
+  width: 70px;
+}
