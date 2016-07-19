@@ -11,6 +11,7 @@
     "test": "NODE_ENV=production karma start ./bin/karma.js",
     "test:watch": "watch 'npm run test' ./tests/",
     "test:coverage": "npm run test -- --coverage",
+    "doctor": "rm -rf node_modules && npm cache clean && npm install && npm run dev",
     "clean": "rimraf ./dist",
     "compile": "NODE_ENV=production DEBUG=app:* webpack -p --config ./config/webpack.prod.config.js --progress",
     "deploy": "npm run test && npm run clean && npm run compile"
@@ -90,7 +91,7 @@
     "react-transform-catch-errors": "^1.0.1",
     "react-transform-hmr": "^1.0.0",
     "redbox-react": "^1.2.3",
-    "redux-devtools": "^3.2.0",
+    "redux-devtools": "^3.3.1",
     "redux-devtools-dock-monitor": "^1.1.1",
     "redux-devtools-log-monitor": "^1.0.11",
     "rimraf": "^2.4.4",
