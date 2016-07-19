@@ -1,55 +1,35 @@
-import React, { Component, PropTypes } from 'react'
-import { Link }                        from 'react-router';
+import React         from 'react';
+import { reduxForm } from 'redux-form';
+import { Link }      from 'react-router';
 
 require('./SignInForm.scss');
 
-export default class SignInForm extends Component {
+class SignInForm extends React.Component {
   static propTypes: {
-    errors: React.PropTypes.array,
-    onSubmit: React.PropTypes.func.isRequired
+    fields: React.PropTypes.object.isRequired,
+    onSubmit: React.PropTypes.func.isRequired,
+    resetForm: PropTypes.func.isRequired,
+    submitting: PropTypes.bool.isRequired
   };
-
-  _handleSubmit(e) {
-    e.preventDefault();
-    this.props.onSubmit(this.refs.email.value, this.refs.password.value);
-  }
-
-  _renderError() {
-    if (this.props.errors.length) {
-      return (
-        <div className="error">
-          {this.props.errors}
-        </div>
-      );  
-    }
-
-    return null;
-  }
 
   render() {
     return (
       <div className="auth-container">
-        <form onSubmit={::this._handleSubmit}>
+        <form onSubmit={this.props.onSubmit}>
           <h1>Log In to Your Account</h1>
 
-          {::this._renderError()}
-
           <input
-            ref="email"
             type="Email"
-            id="email"
             placeholder="Email"
-            required="true"
             className="form-control"
+            {...this.props.fields.email}
           />
          
           <input
-            ref="password"
             type="password"
-            id="password"
             placeholder="Password"
-            required="true"
             className="form-control"
+            {...this.props.fields.password}
           />
          
           <button className="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
@@ -61,3 +41,8 @@ export default class SignInForm extends Component {
     )
   }
 }
+
+export default reduxForm({
+  form: 'signin',
+  fields: ['email', 'password']
+})(SignInForm);
