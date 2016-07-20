@@ -2,7 +2,7 @@ import React         from 'react';
 import { reduxForm } from 'redux-form';
 import { Link }      from 'react-router';
 
-require('./SignInForm.scss');
+import './SignInForm.scss';
 
 class SignInForm extends React.Component {
   static propTypes: {
@@ -32,7 +32,7 @@ class SignInForm extends React.Component {
             {...this.props.fields.password}
           />
          
-          <button className="btn btn-lg btn-primary btn-block" type="submit">
+          <button className="btn btn-lg btn-primary btn-block" type="submit" disabled={this.props.submitting}>
             Sign in
           </button>
 

@@ -1,11 +1,11 @@
-import CALL_API from './callApi';
+import CALL_API from 'middleware/api/callApi';
 import {
     serialiseObj,
     getRequestHeaders,
     isRSAA,
     normalizeRSAARequest
-} from '../../utils';
-import 'isomorphic-fetch'
+} from 'utils';
+import 'isomorphic-fetch';
 
 function callApi({ endpoint, method, data }, successCallback, errorCallback) {
     let params = getRequestHeaders();

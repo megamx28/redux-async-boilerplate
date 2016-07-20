@@ -1,6 +1,6 @@
-import { push }     	    from 'react-router-redux';
-import { CALL_API } 	    from '../middleware/api/callApi';
-import { defaultHeaders } from '../utils';
+import { push }     	  from 'react-router-redux';
+import { CALL_API } 	  from 'middleware/api/callApi';
+import { defaultHeaders } from 'utils';
 
 export default {
 	signUp: (data) => {

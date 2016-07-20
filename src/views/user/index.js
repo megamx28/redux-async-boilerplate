@@ -1,8 +1,8 @@
-import React, { Component, PropTypes } from 'react'
-import { bindActionCreators }          from 'redux'
-import { connect }                     from 'react-redux'
-import UserActions                     from '../../actions/users'
-import List                            from '../../components/List/List'
+import React, { Component, PropTypes } from 'react';
+import { bindActionCreators }          from 'redux';
+import { connect }                     from 'react-redux';
+import UserActions                     from 'actions/users';
+import List                            from 'components/List/List';
 
 class UsersPage extends Component {
   static propTypes: {

@@ -2,7 +2,7 @@ import React         from 'react'
 import { reduxForm } from 'redux-form';
 import { Link }      from 'react-router';
 
-require('./RegisterForm.scss');
+import './RegisterForm.scss';
 
 class RegisterForm extends React.Component {
   static propTypes: {
@@ -46,7 +46,7 @@ class RegisterForm extends React.Component {
             {...this.props.fields.password_confirmation}
           />
          
-          <button className="btn btn-lg btn-primary btn-block" type="submit">
+          <button className="btn btn-lg btn-primary btn-block" type="submit" disabled={this.props.submitting}>
             Get Started
           </button>
 

@@ -1,12 +1,11 @@
 import { IndexRoute, Route }  from 'react-router';
 import React                  from 'react';
-import MainLayout             from '../layouts/main';
-import AuthenticatedContainer from '../containers/authenticated';
-import RegistrationsNew       from '../views/registrations/new';
-import SessionsNew            from '../views/sessions/new';
-import UserIndexView          from '../views/user';
-
-import QuotesNew              from '../views/quotes/new';
+import MainLayout             from 'layouts/main';
+import AuthenticatedContainer from 'containers/authenticated';
+import RegistrationsNew       from 'views/registrations/new';
+import SessionsNew            from 'views/sessions/new';
+import UserIndexView          from 'views/user';
+import QuotesNew              from 'views/quotes/new';
 
 export default function configRoutes(store) {
   const _ensureAuthenticated = (nextState, replace, callback) => {

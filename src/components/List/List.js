@@ -1,6 +1,6 @@
-import React, { Component, PropTypes } from 'react'
+import React from 'react';
 
-export default class List extends Component {
+export default class List extends React.Component {
   static propTypes: {
     items: React.PropTypes.array.isRequired,
     displayKey: React.PropTypes.string.isRequired,

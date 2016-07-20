@@ -1,9 +1,8 @@
 import React, {PropTypes}   from 'react';
 import { connect }          from 'react-redux';
-import { setDocumentTitle } from '../../utils';
-import Actions              from '../../actions/sessions';
-
-import SignInForm           from '../../components/forms/SignInForm/SignInForm';
+import { setDocumentTitle } from 'utils';
+import Actions              from 'actions/sessions';
+import SignInForm           from 'components/forms/SignInForm/SignInForm';
 
 class SessionsNew extends React.Component {
   componentDidMount() {

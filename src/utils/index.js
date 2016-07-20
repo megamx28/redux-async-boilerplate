@@ -1,5 +1,5 @@
 import isPlainObject from 'lodash.isplainobject';
-import CALL_API      from '../middleware/api/callApi';
+import CALL_API      from 'middleware/api/callApi';
 
 export function getRequestHeaders() {
   return {

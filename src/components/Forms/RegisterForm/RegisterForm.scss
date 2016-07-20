@@ -1,12 +1,6 @@
 body {
   background-color: #fff;
   font-size: 15px;
-  padding-top: 60px;
-  text-align: center;
-
-  @media only screen and (max-width: 480px) {
-    padding-top: 20px;
-  }
 }
 
 a,

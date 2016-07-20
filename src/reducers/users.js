@@ -1,5 +1,5 @@
-import { createReducer }     from '../utils'
-import * as Constants        from '../constants/users'
+import { createReducer }     from 'utils'
+import * as Constants        from 'constants/users'
 import { Map, List, fromJS } from 'immutable'
 
 const initialState = {

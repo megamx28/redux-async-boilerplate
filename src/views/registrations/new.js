@@ -2,10 +2,10 @@ import React, {PropTypes}   from 'react';
 import { connect }          from 'react-redux';
 import { Link }             from 'react-router';
 
-import { setDocumentTitle, renderErrorsFor } from '../../utils';
-import Actions from '../../actions/registrations';
+import { setDocumentTitle, renderErrorsFor } from 'utils';
+import Actions from 'actions/registrations';
 
-import RegisterForm from '../../components/forms/RegisterForm/RegisterForm';
+import RegisterForm from 'components/forms/RegisterForm/RegisterForm';
 
 class RegistrationsNew extends React.Component {
   componentDidMount() {

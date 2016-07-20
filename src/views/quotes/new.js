@@ -1,9 +1,9 @@
 import React, {PropTypes} from 'react';
 import { connect }        from 'react-redux';
 import { Link }           from 'react-router';
-import QuotesActions      from '../../actions/quotes';
+import QuotesActions      from 'actions/quotes';
 
-import { setDocumentTitle, renderErrorsFor } from '../../utils';
+import { setDocumentTitle, renderErrorsFor } from 'utils';
 
 class QuotesNew extends React.Component {
   componentDidMount() {
