@@ -13,7 +13,7 @@ const config = {
   context: __dirname,
 
   entry: [
-    __dirname + '/../src/index.jsx'
+    __dirname + '/../src/index.js'
   ],
 
   output: {

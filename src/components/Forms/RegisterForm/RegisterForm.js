@@ -1,76 +1,54 @@
-import React, { Component, PropTypes } from 'react'
-import { Link }                        from 'react-router';
+import React         from 'react'
+import { reduxForm } from 'redux-form';
+import { Link }      from 'react-router';
 
 require('./RegisterForm.scss');
 
-export default class RegisterForm extends Component {
+class RegisterForm extends React.Component {
   static propTypes: {
-    errors: React.PropTypes.array,
-    onSubmit: React.PropTypes.func.isRequired
+    fields: React.PropTypes.object.isRequired,
+    onSubmit: React.PropTypes.func.isRequired,
+    resetForm: PropTypes.func.isRequired,
+    submitting: PropTypes.bool.isRequired
   };
-
-  _handleSubmit(e) {
-    e.preventDefault();
-    this.props.onSubmit(this.refs.email.value, this.refs.password.value);
-  }
-
-  _renderError() {
-    if (this.props.errors.length) {
-      return (
-        <div className="error">
-          {this.props.errors}
-        </div>
-      );  
-    }
-
-    return null;
-  }
 
   render() {
     return (
       <div className="auth-container">
-        <form onSubmit={::this._handleSubmit}>
+        <form onSubmit={this.props.onSubmit}>
           <h1>Create Your Account</h1>
 
-          {::this._renderError()}
-
           <input
-            ref="name"
             type="text"
-            id="name"
             placeholder="Name"
-            required="true"
             className="form-control"
+            {...this.props.fields.name}
           />
 
           <input
-            ref="email"
-            type="Email"
-            id="email"
+            type="email"
             placeholder="Email"
-            required="true"
             className="form-control"
+            {...this.props.fields.email}
           />
          
           <input
-            ref="password"
             type="password"
-            id="password"
             placeholder="Password"
-            required="true"
             className="form-control"
+            {...this.props.fields.password}
           />
 
           <input
-            ref="password_confirmation"
             type="password"
-            id="password_confirmation"
             placeholder="Confirm your password"
-            required="true"
             className="form-control"
+            {...this.props.fields.password_confirmation}
           />
          
-          <button className="btn btn-lg btn-primary btn-block" type="submit">Get Started</button>
+          <button className="btn btn-lg btn-primary btn-block" type="submit">
+            Get Started
+          </button>
 
           <p>Already have an account? <Link to="/sign-in">Sign in?</Link></p>
         </form>
@@ -78,3 +56,8 @@ export default class RegisterForm extends Component {
     )
   }
 }
+
+export default reduxForm({
+  form: 'register',
+  fields: ['name', 'email', 'password', 'password_confirmation']
+})(RegisterForm);

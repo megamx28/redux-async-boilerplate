@@ -32,7 +32,9 @@ class SignInForm extends React.Component {
             {...this.props.fields.password}
           />
          
-          <button className="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+          <button className="btn btn-lg btn-primary btn-block" type="submit">
+            Sign in
+          </button>
 
           <p><Link to="/sign-up">Forgot you password?</Link></p>
           <p>Don't have an account? <Link to="/sign-up">Sign up?</Link></p>
