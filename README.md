@@ -5,21 +5,9 @@
 
 React Redux Async Boilerplate is a starter app designed to support small to midsized production apps. By starting with a complete build and test environment, you can focus what matters, which is building you application.
 
-This boilerplate uses Webpack, React, React Hot Module Replacement Redux, React Router, Karma, Mocha, Chai and more to create an easy to use development environment.
+This boilerplate features [react](https://github.com/facebook/react), [redux](https://github.com/rackt/redux), [react-router](https://github.com/rackt/react-router), [react-router-redux](https://github.com/rackt/react-router-redux), [webpack](https://github.com/webpack/webpack), [babel](https://github.com/babel/babel), [karma](https://github.com/karma-runner/karma), [eslint](http://eslint.org), [storybook](https://github.com/kadirahq/react-storybook)
 
 ## Getting Started
-
-### Features
-* [react](https://github.com/facebook/react)
-* [redux](https://github.com/rackt/redux)
-* [react-router](https://github.com/rackt/react-router)
-* [react-router-redux](https://github.com/rackt/react-router-redux)
-* [webpack](https://github.com/webpack/webpack)
-* [babel](https://github.com/babel/babel)
-* [karma](https://github.com/karma-runner/karma)
-* [eslint](http://eslint.org)
-* [storybook](https://github.com/kadirahq/react-storybook)
-
 
 ### Install
 
