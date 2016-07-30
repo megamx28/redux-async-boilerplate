@@ -7,6 +7,18 @@ React Redux Async Boilerplate is a starter app designed to support small to mids
 
 This boilerplate uses Webpack, React, React Hot Module Replacement Redux, React Router, Karma, Mocha, Chai and more to create an easy to use development environment.
 
+### Features
+* [react](https://github.com/facebook/react)
+* [redux](https://github.com/rackt/redux)
+* [react-router](https://github.com/rackt/react-router)
+* [react-router-redux](https://github.com/rackt/react-router-redux)
+* [webpack](https://github.com/webpack/webpack)
+* [babel](https://github.com/babel/babel)
+* [karma](https://github.com/karma-runner/karma)
+* [eslint](http://eslint.org)
+* [storybook](https://github.com/kadirahq/react-storybook)
+
+
 ### Install
 
     $ git clone https://github.com/shanedasilva/redux-async-boilerplate.git
@@ -18,28 +30,15 @@ Open [http://localhost:3000](http://localhost:3000) in your browser to display t
 ### NPM Commands
 |`npm run <script>`|Description|
 |------------------|-----------|
-|`start`|Serves your app at `localhost:3000`. HMR will be enabled in development.|
-|`compile`|Compiles the application to disk (`~/dist` by default).|
-|`dev`|Same as `npm start`, but enables nodemon for the server as well.|
-|`dev:no-debug`|Same as `npm run dev` but disables devtool instrumentation.|
-|`test`|Runs unit tests with Karma and generates a coverage report.|
-|`test:dev`|Runs Karma and watches for changes to re-run tests; does not generate coverage reports.|
-|`deploy`|Runs linter, tests, and then, on success, compiles your application to disk.|
-|`deploy:dev`|Same as `deploy` but overrides `NODE_ENV` to "development".|
-|`deploy:prod`|Same as `deploy` but overrides `NODE_ENV` to "production".|
-|`lint`|Lint all `.js` files.|
-|`lint:fix`|Lint and fix all `.js` files. [Read more on this](http://eslint.org/docs/user-guide/command-line-interface.html#fix).|
-
-
-
-
-
-
-* `npm run dev`
-* `npm run lint`
-* `npm run lint:fix`
-* `npm run test`
-* `npm run test:watch`
-* `npm run clean`
-* `npm run compile`
-* `npm run deploy`
+|`dev`|Serves your app at `localhost:3000`. HMR will be enabled in development|
+|`lint`|Lint all `.js` files|
+|`lint:fix`|Lint and fix all `.js` files|
+|`test`|Runs unit tests with Karma|
+|`test:watch`|Runs unit tests and runs watcher|
+|`test:coverage`|Runs unit tests with Karma and generates a coverage report|
+|`doctor`|Removes node_modules, reinstalls and runs dev|
+|`clean`|Cleans out the dist folder|
+|`compile`|Compiles src to dist. Overrides `NODE_ENV` to "production".|
+|`deploy`|Runs lint, tests, clean and deploy|
+|`storybook`|Serves the Storybook app at `localhost:9001`. Looks for all `.stories.js` files. [Read more](https://github.com/kadirahq/react-storybook).|
+|`storybook:publish`|Builds a static version of Storybook at `/storybook-build-dir`|
