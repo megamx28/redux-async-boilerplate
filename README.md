@@ -78,4 +78,4 @@ These are global variables available to you anywhere in your source code. If you
 
 ### Styles
 
-Both `.scss` and `.css` file extensions are supported out of the box and are configured to use [CSS Modules](https://github.com/css-modules/css-modules). After being imported, styles will be processed with [PostCSS](https://github.com/postcss/postcss) for minification and autoprefixing, and will be extracted to a `.css` file during production builds.
+Both `.scss` and `.css` file extensions are supported.
