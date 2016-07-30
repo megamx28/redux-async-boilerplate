@@ -6,19 +6,15 @@ if (argv.coverage) reporters.push('coverage');
 
 module.exports = function(config) {
   config.set({
-    browsers: [process.env.CONTINUOUS_INTEGRATION ? 'Firefox' : 'Chrome'],
+    browsers: ['PhantomJS'],
     // Just run once by default
     singleRun: true,
-    // Use the mocha test framework
-    frameworks: ['mocha', 'chai'],
+    frameworks: ['mocha'],
     files: [
       './../tests/tests.webpack.js'
     ],
     plugins: [
-      'karma-chrome-launcher',
-      'karma-firefox-launcher',
       'karma-phantomjs-launcher',
-      'karma-chai',
       'karma-mocha',
       'karma-sourcemap-loader',
       'karma-webpack',
@@ -40,12 +36,19 @@ module.exports = function(config) {
           exclude: /(test|node_modules)\//,
           loader: 'babel'
         }],
-        // Delays coverage til after tests are run, fixing transpiled source coverage error
+        // Delays coverage til after tests are run,
+        // fixing transpiled source coverage error
         postLoaders: [{
           test: /\.js$/,
           exclude: /(tests|node_modules)\//,
           loader: 'istanbul-instrumenter'
         }]
+      },
+      externals: {
+        'cheerio': 'window',
+        'react/addons': true,
+        'react/lib/ExecutionEnvironment': true,
+        'react/lib/ReactContext': true
       }
     },
     webpackServer: {
@@ -53,11 +56,9 @@ module.exports = function(config) {
       noInfo: true
     },
     coverageReporter: {
-      // Path to created html doc
       dir: './../coverage/',
       reporters: [
         { type : 'text-summary' },
-        // Produces a html document after code is run
         { type: 'html', subdir: 'html' }
       ]
     }

@@ -1,3 +1,4 @@
+import expect from 'expect';
 import CALL_API from './../../src/middleware/api/callApi';
 import {
   createConstants,
@@ -19,7 +20,7 @@ describe('Utils', () => {
         'ROLES_REQUEST_SUCCESS'
       );
 
-      expect(constants).to.deep.equal({
+      expect(constants).toEqual({
         ROLES_REQUEST: 'ROLES_REQUEST',
         ROLES_REQUEST_SUCCESS: 'ROLES_REQUEST_SUCCESS'
       });
@@ -31,7 +32,7 @@ describe('Utils', () => {
       const reducerMap = {};
       const reducer = createReducer('theintialstate', reducerMap);
 
-      expect(reducer(undefined, {type: 'YOLO'})).to.equal('theintialstate');
+      expect(reducer(undefined, {type: 'YOLO'})).toEqual('theintialstate');
     });
 
     it('returns the correct state on the first call with a matches', () => {
@@ -40,7 +41,7 @@ describe('Utils', () => {
       };
       const reducer = createReducer('theintialstate', reducerMap);
 
-      expect(reducer(undefined, {type: 'YOLO'})).to.equal('theproperstate');
+      expect(reducer(undefined, {type: 'YOLO'})).toEqual('theproperstate');
     });
 
     it('returns the same state if no value matched', () => {
@@ -48,7 +49,7 @@ describe('Utils', () => {
       const reducer = createReducer({someObj: true}, reducerMap);
       const state = reducer(undefined, {type: 'YOLO'});
 
-      expect(reducer(state, {type: 'YOLO'})).to.equal(state);
+      expect(reducer(state, {type: 'YOLO'})).toEqual(state);
     });
 
     it('returns a new state if a value matched', () => {
@@ -59,7 +60,7 @@ describe('Utils', () => {
       };
       const reducer = createReducer({someObj: 1}, reducerMap);
       const state = reducer(undefined, {});
-      expect(reducer(state, {type: 'YOLO'})).to.deep.equal({someObj: 2});
+      expect(reducer(state, {type: 'YOLO'})).toEqual({someObj: 2});
     });
   });
 
@@ -69,7 +70,7 @@ describe('Utils', () => {
 
       const headers = getRequestHeaders();
 
-      expect(headers).to.deep.equal({
+      expect(headers).toEqual({
         'Content-Type': 'application/x-www-form-urlencoded',
         'headers': {
           'Content-Type': 'application/json',
@@ -82,7 +83,7 @@ describe('Utils', () => {
   describe('setDocumentTitle', () => {
     it('sets the document header', () => {
       setDocumentTitle('Test Title');
-      expect(document.title).to.equal('Test Title | React Starter');
+      expect(document.title).toEqual('Test Title | React Starter');
     });
   });
 
@@ -95,7 +96,7 @@ describe('Utils', () => {
         }
       };
 
-      expect(isRSAA(action)).to.equal(true);
+      expect(isRSAA(action)).toEqual(true);
     });
 
     it('return false when action does not have a CALL_API key', () => {
@@ -104,7 +105,7 @@ describe('Utils', () => {
         endpoint: 'role/save/permissions'
       };
 
-      expect(isRSAA(action)).to.equal(false);
+      expect(isRSAA(action)).toEqual(false);
     });
 
     it('return false when action is not an object', () => {
@@ -115,7 +116,7 @@ describe('Utils', () => {
         }
       }];
 
-      expect(isRSAA(action)).to.equal(false);
+      expect(isRSAA(action)).toEqual(false);
     });
   });
 
@@ -127,7 +128,7 @@ describe('Utils', () => {
       };
       const normalizedRequest = normalizeRSAARequest(action);
 
-      expect(normalizedRequest).to.deep.equal({
+      expect(normalizedRequest).toEqual({
         types: ['pending', 'success', 'failure'],
         endpoint: 'role/save/permissions',
         method: null,
@@ -144,7 +145,7 @@ describe('Utils', () => {
       };
       const normalizedRequest = normalizeRSAARequest(action);
 
-      expect(normalizedRequest).to.deep.equal({
+      expect(normalizedRequest).toEqual({
         types: ['pending', 'success', 'failure'],
         endpoint: 'role/save/permissions',
         method: 'POST',
@@ -162,7 +163,7 @@ describe('Utils', () => {
         data: {test: 'test'}
       };
 
-      expect(validateRSAARequest(action)).to.equal(true);
+      expect(validateRSAARequest(action)).toEqual(true);
     });
 
     it('throws an error if types key doesnt exist', () => {
@@ -172,7 +173,7 @@ describe('Utils', () => {
         data: {test: 'test'}
       };
 
-      expect(() => validateRSAARequest(action)).to.throw();
+      expect(() => validateRSAARequest(action)).toThrow();
     });
 
     it('throws an error if key types.length !== 3', () => {
@@ -183,7 +184,7 @@ describe('Utils', () => {
         data: {test: 'test'}
       };
 
-      expect(() => validateRSAARequest(action)).to.throw();
+      expect(() => validateRSAARequest(action)).toThrow();
     });
 
     it('throws an error if endpoint key doesnt exist', () => {
@@ -193,7 +194,7 @@ describe('Utils', () => {
         data: {test: 'test'}
       };
 
-      expect(() => validateRSAARequest(action)).to.throw();
+      expect(() => validateRSAARequest(action)).toThrow();
     });
   });
 })

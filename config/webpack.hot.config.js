@@ -34,7 +34,6 @@ config.module.loaders.push(
     loaders: [
       'style-loader',
       'css-loader',
-      'postcss-loader',
       'sass-loader'
     ]
   },
