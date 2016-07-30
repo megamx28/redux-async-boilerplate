@@ -1,5 +1,6 @@
 var webpack = require('webpack');
 var argv = require('yargs').argv;
+var webpackConfig = require('../config/webpack.karma.config');
 
 var reporters = ['mocha'];
 if (argv.coverage) reporters.push('coverage');
@@ -27,30 +28,7 @@ module.exports = function(config) {
     },
     // Report results in this format
     reporters: reporters,
-    webpack: {
-      // Just do inline source maps instead of the default
-      devtool: 'inline-source-map',
-      module: {
-        loaders: [{
-          test: /\.js$/,
-          exclude: /(test|node_modules)\//,
-          loader: 'babel'
-        }],
-        // Delays coverage til after tests are run,
-        // fixing transpiled source coverage error
-        postLoaders: [{
-          test: /\.js$/,
-          exclude: /(tests|node_modules)\//,
-          loader: 'istanbul-instrumenter'
-        }]
-      },
-      externals: {
-        'cheerio': 'window',
-        'react/addons': true,
-        'react/lib/ExecutionEnvironment': true,
-        'react/lib/ReactContext': true
-      }
-    },
+    webpack: webpackConfig,
     webpackServer: {
       // Don't spam the console when running in karma!
       noInfo: true
