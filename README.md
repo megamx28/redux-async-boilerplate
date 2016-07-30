@@ -49,14 +49,33 @@ Open [http://localhost:3000](http://localhost:3000) in your browser to display t
 
 ### Developer Tools
 
+Redux DevTools is a development time package that provides power-ups for your Redux development workflow. By default, the dock and log monitors are provided but more can be added by editing `src/containers/devTools.js`. The dev tools won't be included when `NODE_ENV` is set to "production".
+
 ### API
 
 ### Routing
 
+We use `react-router` [route definitions](https://github.com/reactjs/react-router/blob/master/docs/API.md#plainroute) (`<route>/index.js`) to define units of logic within our application. See the [application structure](#application-structure) section for more information.
+
 ### Testing
 
-### Path Aliases
+To add a unit test, simply create a `.spec.js` file anywhere in `~/tests`. Karma will pick up on these files automatically, and Mocha and Chai will be available within your test without the need to import them.
+
+Coverage reports will be compiled to `~/coverage` by default. If you wish to change what reporters are used and where reports are compiled, you can do so by modifying `coverage_reporters` in `~/config/index.js`.
+
+### Root Aliases
 
 ### Globals
 
+These are global variables available to you anywhere in your source code. If you wish to modify them, they can be found as the `globals` key in `~/config/index.js`. When adding new globals, make sure you also add them to `~/.eslintrc`.
+
+|Variable|Description|
+|---|---|
+|`process.env.NODE_ENV`|the active `NODE_ENV` when the build started|
+|`__DEV__`|True when `process.env.NODE_ENV` is `development`|
+|`__PROD__`|True when `process.env.NODE_ENV` is `production`|
+
+
 ### Styles
+
+Both `.scss` and `.css` file extensions are supported out of the box and are configured to use [CSS Modules](https://github.com/css-modules/css-modules). After being imported, styles will be processed with [PostCSS](https://github.com/postcss/postcss) for minification and autoprefixing, and will be extracted to a `.css` file during production builds.
