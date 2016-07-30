@@ -3,7 +3,6 @@
   "version": "0.0.0",
   "description": "Redux Async Boilerplate",
   "scripts": {
-    "start": "npm run dev",
     "dev": "node -r dotenv/config ./bin/server.js",
     "lint": "eslint ./src/ --ext .js --ext .jsx",
     "lint:fix": "npm run lint -- --fix",
