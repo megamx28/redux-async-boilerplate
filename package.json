@@ -5,20 +5,15 @@
   "scripts": {
     "start": "npm run dev",
     "dev": "node -r dotenv/config ./bin/server.js",
-
     "lint": "eslint ./src/ --ext .js --ext .jsx",
     "lint:fix": "npm run lint -- --fix",
-
     "test": "NODE_ENV=production karma start ./bin/karma.js",
     "test:watch": "watch 'npm run test' ./tests/",
     "test:coverage": "npm run test -- --coverage",
-
     "doctor": "rm -rf node_modules && npm cache clean && npm install && npm run dev",
-
     "clean": "rimraf ./dist",
     "compile": "NODE_ENV=production DEBUG=app:* webpack -p --config ./config/webpack.prod.config.js --progress",
     "deploy": "npm run test && npm run clean && npm run compile",
-
     "storybook": "start-storybook -p 9001",
     "storybook:publish": "build-storybook -o storybook-build-dir"
   },
@@ -57,6 +52,7 @@
     "yargs": "4.6.0"
   },
   "devDependencies": {
+    "@kadira/react-storybook-addon-info": "^3.1.1",
     "@kadira/storybook": "^1.41.0",
     "babel-core": "6.10.4",
     "babel-eslint": "6.1.2",
