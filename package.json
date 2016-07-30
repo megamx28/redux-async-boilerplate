@@ -49,6 +49,7 @@
   "devDependencies": {
     "@kadira/react-storybook-addon-info": "^3.1.1",
     "@kadira/storybook": "^1.41.0",
+    "Faker": "^0.7.2",
     "babel-core": "6.10.4",
     "babel-eslint": "6.1.2",
     "babel-loader": "6.2.4",

@@ -1,13 +1,12 @@
 import React from 'react';
 import { storiesOf } from '@kadira/storybook';
+import Faker from 'Faker';
 import List from './List';
 
-const items = [
-    { name: 'jondoe1' },
-    { name: 'jondoe2' },
-    { name: 'jondoe3' },
-    { name: 'jondoe4' }
-];
+var items = [];
+for (let i = 0; i <= 6; i++) {
+    items.push({name: Faker.Name.findName()})
+}
 
 storiesOf('List', module)
     .addWithInfo(
