@@ -1,6 +1,7 @@
 var path = require('path');
 var webpack = require('webpack');
 var argv = require('yargs').argv;
+var StyleLintPlugin = require('stylelint-webpack-plugin');
 
 const debug = require('debug')('app:webpack:base');
 debug('Reading Base Config.');
@@ -60,7 +61,12 @@ config.globals = {
 };
 
 config.plugins = [
-  new webpack.DefinePlugin(config.globals)
+  new webpack.DefinePlugin(config.globals),
+  new StyleLintPlugin(
+    configFile: '.stylelintrc',
+    files: '**/*.s?(a|c)ss',
+    failOnError: true
+  )
 ];
 
 module.exports = config;
