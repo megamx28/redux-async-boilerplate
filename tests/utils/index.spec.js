@@ -7,9 +7,7 @@ import {
   getRequestHeaders,
   isRSAA,
   normalizeRSAARequest,
-  validateRSAARequest,
-  setDocumentTitle,
-  renderErrorsFor
+  validateRSAARequest
 } from './../../src/utils';
 
 describe('Utils', () => {
@@ -78,13 +76,6 @@ describe('Utils', () => {
         }
       });
     })
-  });
-
-  describe('setDocumentTitle', () => {
-    it('sets the document header', () => {
-      setDocumentTitle('Test Title');
-      expect(document.title).toEqual('Test Title | React Starter');
-    });
   });
 
   describe('isRSAA', () => {

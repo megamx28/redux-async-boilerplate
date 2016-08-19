@@ -6,31 +6,9 @@ export function getRequestHeaders() {
     'Content-Type': 'application/x-www-form-urlencoded',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${localStorage.getItem('token')}`
+      Authorization: `Bearer {${localStorage.getItem('token')}}`
     }
   };
-}
-
-export function setDocumentTitle(title) {
-  document.title = `${title} | React Starter`;
-}
-
-export function renderErrorsFor(errors, ref) {
-  if (!errors) {
-    return false;
-  }
-
-  return errors.map((error, i) => {
-    if (error[ref]) {
-      return (
-        <div key={i} className="error">
-          {error[ref]}
-        </div>
-      );
-    }
-
-    return null;
-  });
 }
 
 export function createConstants(...constants) {
