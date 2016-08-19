@@ -1,11 +1,11 @@
-import React from 'react';
+import React         from 'react';
 import { storiesOf } from '@kadira/storybook';
-import Faker from 'Faker';
-import List from './List';
+import faker         from 'faker';
+import List          from './List';
 
 var items = [];
 for (let i = 0; i <= 6; i++) {
-    items.push({name: Faker.Name.findName()})
+    items.push({name: faker.name.findName()})
 }
 
 storiesOf('List', module)

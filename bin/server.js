@@ -9,7 +9,7 @@ debug('Creating Webpack Dev Server.')
 new WebpackDevServer(webpack(config), {
   publicPath: config.output.publicPath,
   hot: true,
-  quiet: true,
+  quiet: false,
   colors: true,
   stats: { colors: true },
   historyApiFallback: true
