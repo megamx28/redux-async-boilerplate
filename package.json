@@ -17,7 +17,7 @@
     "storybook:publish": "build-storybook -o storybook-build-dir"
   },
   "pre-commit": [
-    "test
+    "test"
   ],
   "repository": {
     "type": "git",
