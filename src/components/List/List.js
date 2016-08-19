@@ -6,10 +6,12 @@ export default class List extends React.Component {
     return (
       <ol>
         {this.props.items.map((item, index) => {
-          return <li key={index}>{item[this.props.displayKey]}</li>
+          return (
+            <li key={index}>{item[this.props.displayKey]}</li>
+          );
         })}
-    </ol>
-    )
+      </ol>
+    );
   }
 
 }

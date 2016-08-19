@@ -4,7 +4,7 @@
   "description": "Redux Async Boilerplate",
   "scripts": {
     "dev": "node -r dotenv/config ./bin/server.js",
-    "lint": "eslint ./src/ --ext .js --ext .jsx",
+    "lint": "eslint ./src/ --ext .js",
     "lint:fix": "npm run lint -- --fix",
     "test": "NODE_ENV=production karma start ./bin/karma.js",
     "test:watch": "watch 'npm run test' ./tests/",
@@ -17,6 +17,7 @@
     "storybook:publish": "build-storybook -o storybook-build-dir"
   },
   "pre-commit": [
+    "lint",
     "test"
   ],
   "repository": {
@@ -60,7 +61,10 @@
     "css-loader": "^0.23.1",
     "enzyme": "^2.4.1",
     "eslint": "3.3.1",
+    "eslint-config-airbnb": "^10.0.1",
     "eslint-loader": "^1.5.0",
+    "eslint-plugin-import": "^1.13.0",
+    "eslint-plugin-jsx-a11y": "^2.1.0",
     "eslint-plugin-react": "6.1.2",
     "expect": "^1.20.2",
     "faker": "3.1.0",

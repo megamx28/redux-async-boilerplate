@@ -1,11 +1,11 @@
-import React, { Component, PropTypes } from 'react';
-import { bindActionCreators }          from 'redux';
-import { connect }                     from 'react-redux';
-import ExampleActions                  from 'actions/example';
-import List                            from 'components/List/List';
-import faker                           from 'faker';
+import React from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import ExampleActions from 'actions/example';
+import List from 'components/List/List';
+import faker from 'faker';
 
-class ExampleView extends Component {
+class ExampleView extends React.Component {
 
   constructor(props) {
     super(props);
@@ -15,7 +15,7 @@ class ExampleView extends Component {
 
   componentDidMount() {
     for (let i = 0; i <= 6; i++) {
-      this.items.push({name: faker.name.findName()})
+      this.items.push({ name: faker.name.findName() });
     }
   }
 
@@ -36,7 +36,7 @@ ExampleView.propTypes = {
 const mapStateToProps = (state) => {
   return {
     users: state.users
-  }
+  };
 };
 
 const mapDispatchToProps = (dispatch) => ({

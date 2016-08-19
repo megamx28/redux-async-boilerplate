@@ -1,10 +1,6 @@
 import React from 'react';
 
 export default class MainLayout extends React.Component {
-  constructor() {
-    super();
-  }
-
   render() {
     return (
       <div>
@@ -13,3 +9,7 @@ export default class MainLayout extends React.Component {
     );
   }
 }
+
+MainLayout.propTypes = {
+  children: React.Proptypes.node.isRequired
+};

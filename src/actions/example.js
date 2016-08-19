@@ -1,5 +1,5 @@
 import Constants from 'constants/example';
-import CALL_API  from 'middleware/api/callApi';
+import CALL_API from 'middleware/api/callApi';
 
 export default {
   example: () => {
@@ -12,6 +12,6 @@ export default {
         ],
         endpoint: 'example'
       }
-    }
+    };
   }
-}
+};

@@ -1,10 +1,10 @@
 import { createStore, applyMiddleware, compose } from 'redux';
-import { routerMiddleware }                      from 'react-router-redux';
-import createLogger                              from 'redux-logger';
-import thunkMiddleware                           from 'redux-thunk';
-import DevTools                                  from 'containers/DevTools';
-import apiMiddleware                             from 'middleware/api'
-import reducers                                  from 'reducers';
+import { routerMiddleware } from 'react-router-redux';
+import createLogger from 'redux-logger';
+import thunkMiddleware from 'redux-thunk';
+import DevTools from 'containers/DevTools';
+import apiMiddleware from 'middleware/api';
+import reducers from 'reducers';
 
 const loggerMiddleware = createLogger({
   level: 'info',

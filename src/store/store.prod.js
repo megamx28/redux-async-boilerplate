@@ -1,9 +1,9 @@
 import { createStore, applyMiddleware } from 'redux';
-import { routerMiddleware }             from 'react-router-redux';
-import createLogger                     from 'redux-logger';
-import thunkMiddleware                  from 'redux-thunk';
-import apiMiddleware                    from 'middleware/api'
-import reducers                         from 'reducers';
+import { routerMiddleware } from 'react-router-redux';
+import createLogger from 'redux-logger';
+import thunkMiddleware from 'redux-thunk';
+import apiMiddleware from 'middleware/api';
+import reducers from 'reducers';
 
 const loggerMiddleware = createLogger({
   level: 'info',
@@ -12,7 +12,12 @@ const loggerMiddleware = createLogger({
 
 export default function configureStore(browserHistory) {
   const reduxRouterMiddleware = routerMiddleware(browserHistory);
-  const createStoreWithMiddleware = applyMiddleware(reduxRouterMiddleware, thunkMiddleware, apiMiddleware, loggerMiddleware)(createStore);
+  const createStoreWithMiddleware = applyMiddleware(
+    reduxRouterMiddleware,
+    thunkMiddleware,
+    apiMiddleware,
+    loggerMiddleware
+  )(createStore);
 
   return createStoreWithMiddleware(reducers);
 }

@@ -1,17 +1,21 @@
-import React       from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 
 class AuthenticatedContainer extends React.Component {
   render() {
     return (
       <div id="authentication-container" className="application-container">
-        <div className='main-container'>
+        <div className="main-container">
           {this.props.children}
         </div>
       </div>
     );
   }
 }
+
+AuthenticatedContainer.propTypes = {
+  children: React.Proptypes.node.isRequired
+};
 
 const mapStateToProps = (state) => ({
   currentUser: state.session.currentUser

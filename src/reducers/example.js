@@ -1,5 +1,5 @@
 import { createReducer } from 'utils';
-import Constants         from 'constants/example';
+import Constants from 'constants/example';
 
 const initialState = {
   users: []
