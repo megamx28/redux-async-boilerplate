@@ -1,10 +1,6 @@
 import React from 'react';
 
 export default class List extends React.Component {
-  static propTypes: {
-    items: React.PropTypes.array.isRequired,
-    displayKey: React.PropTypes.string.isRequired,
-  };
 
   render() {
     return (
@@ -15,4 +11,17 @@ export default class List extends React.Component {
     </ol>
     )
   }
+
+}
+
+List.displayName = 'List';
+
+List.propTypes = {
+  items: React.PropTypes.array.isRequired,
+  displayKey: React.PropTypes.string.isRequired
+};
+
+List.defaultProps = {
+  items: [],
+  displayKey: List.displayName
 }

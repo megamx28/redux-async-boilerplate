@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { bindActionCreators }          from 'redux';
 import { connect }                     from 'react-redux';
-import UserActions                     from 'actions/example';
+import ExampleActions                  from 'actions/example';
 import List                            from 'components/List/List';
 import faker                           from 'faker';
 
@@ -40,7 +40,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  actions: bindActionCreators(UserActions, dispatch)
+  exampleActions: bindActionCreators(ExampleActions, dispatch)
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ExampleView);
