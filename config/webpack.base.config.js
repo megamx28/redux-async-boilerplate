@@ -62,11 +62,11 @@ config.globals = {
 
 config.plugins = [
   new webpack.DefinePlugin(config.globals),
-  new StyleLintPlugin(
+  new StyleLintPlugin({
     configFile: '.stylelintrc',
-    files: '**/*.s?(a|c)ss',
+    files: '../src/**/*.scss',
     failOnError: true
-  )
+  })
 ];
 
 module.exports = config;
