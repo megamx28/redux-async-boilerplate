@@ -7,9 +7,7 @@ React Redux Async Boilerplate is a starter app designed to support small to mids
 
 This boilerplate features [react](https://github.com/facebook/react), [redux](https://github.com/rackt/redux), [react-router](https://github.com/rackt/react-router), [react-router-redux](https://github.com/rackt/react-router-redux), [webpack](https://github.com/webpack/webpack), [babel](https://github.com/babel/babel), [karma](https://github.com/karma-runner/karma), [eslint](http://eslint.org), [storybook](https://github.com/kadirahq/react-storybook)
 
-## Getting Started
-
-### Install
+## Install
 
     $ git clone https://github.com/shanedasilva/redux-async-boilerplate.git
     $ npm install
