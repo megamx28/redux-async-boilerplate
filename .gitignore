@@ -4,4 +4,4 @@ node_modules/
 dist/
 coverage/
 .idea/
-storybook_build/
+storybook/
