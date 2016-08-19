@@ -17,6 +17,9 @@ This boilerplate features [react](https://github.com/facebook/react), [redux](ht
 
 Open [http://localhost:3000](http://localhost:3000) in your browser to display the app.
 
+### Storybook
+View static site at [https://shanedasilva.github.io/redux-async-boilerplate]
+
 ### NPM Commands
 |`npm run <script>`|Description|
 |------------------|-----------|

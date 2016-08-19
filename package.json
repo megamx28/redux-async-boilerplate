@@ -14,11 +14,14 @@
     "compile": "NODE_ENV=production DEBUG=app:* webpack -p --config ./config/webpack.prod.config.js --progress",
     "deploy": "npm run test && npm run clean && npm run compile",
     "storybook": "start-storybook -p 9001",
-    "storybook:publish": "build-storybook -o storybook"
+    "storybook:deploy": "storybook-to-ghpages"
   },
   "pre-commit": [
     "lint",
     "test"
+  ],
+  "pre-push": [
+    "storybook:deploy"
   ],
   "repository": {
     "type": "git",
@@ -30,6 +33,7 @@
   },
   "homepage": "https://github.com/shanedasilva",
   "dependencies": {
+    "@kadira/storybook-deployer": "^1.1.0",
     "classnames": "^2.2.5",
     "debug": "^2.2.0",
     "dotenv": "2.0.0",
