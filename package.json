@@ -16,6 +16,9 @@
     "storybook": "start-storybook -p 9001",
     "storybook:publish": "build-storybook -o storybook-build-dir"
   },
+  "pre-commit": [
+    "test
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/shanedasilva/redux-async-boilerplate.git"
