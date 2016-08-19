@@ -13,7 +13,7 @@
     "clean": "rimraf ./dist",
     "compile": "NODE_ENV=production DEBUG=app:* webpack -p --config ./config/webpack.prod.config.js --progress",
     "deploy": "npm run test && npm run clean && npm run compile",
-    "storybook": "start-storybook -p 9001",ker
+    "storybook": "start-storybook -p 9001",
     "storybook:publish": "build-storybook -o storybook-build-dir"
   },
   "repository": {
