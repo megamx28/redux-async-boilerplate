@@ -13,7 +13,7 @@
     "clean": "rimraf ./dist",
     "compile": "NODE_ENV=production DEBUG=app:* webpack -p --config ./config/webpack.prod.config.js --progress",
     "deploy": "npm run test && npm run clean && npm run compile",
-    "storybook": "start-storybook -p 9001",
+    "storybook": "start-storybook -p 9001",ker
     "storybook:publish": "build-storybook -o storybook-build-dir"
   },
   "repository": {
@@ -48,7 +48,7 @@
   "devDependencies": {
     "@kadira/react-storybook-addon-info": "^3.1.1",
     "@kadira/storybook": "2.2.1",
-    "faker": "^0.7.2",
+    "faker": "3.1.0",
     "babel-core": "6.13.2",
     "babel-eslint": "6.1.2",
     "babel-loader": "6.2.4",
