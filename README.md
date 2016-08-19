@@ -39,8 +39,6 @@ Open [http://localhost:3000](http://localhost:3000) in your browser to display t
 
 Redux DevTools is a development time package that provides power-ups for your Redux development workflow. By default, the dock and log monitors are provided but more can be added by editing `src/containers/devTools.js`. The dev tools won't be included when `NODE_ENV` is set to "production".
 
-### API
-
 ### Routing
 
 We use `react-router` [route definitions](https://github.com/reactjs/react-router/blob/master/docs/API.md#plainroute) (`<route>/index.js`) to define units of logic within our application. See the [application structure](#application-structure) section for more information.
@@ -50,8 +48,6 @@ We use `react-router` [route definitions](https://github.com/reactjs/react-route
 To add a unit test, simply create a `.spec.js` file anywhere in `~/tests`. Karma will pick up on these files automatically, and Mocha and Chai will be available within your test without the need to import them.
 
 Coverage reports will be compiled to `~/coverage` by default. If you wish to change what reporters are used and where reports are compiled, you can do so by modifying `coverage_reporters` in `~/config/index.js`.
-
-### Root Aliases
 
 ### Globals
 
