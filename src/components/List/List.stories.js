@@ -15,5 +15,5 @@ storiesOf('List', module)
           This is the basic list component that accepts an array of list items.
         `,
         () => (<List items={items} displayKey="name" />),
-        { inline: true, propTables: [List] }
+        { inline: false, propTables: [List] }
     );

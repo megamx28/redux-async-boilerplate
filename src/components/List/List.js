@@ -24,4 +24,4 @@ List.propTypes = {
 List.defaultProps = {
   items: [],
   displayKey: List.displayName
-}
+};
