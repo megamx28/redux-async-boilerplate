@@ -4,12 +4,12 @@
   "description": "Redux Async Boilerplate",
   "scripts": {
     "dev": "node -r dotenv/config ./bin/server.js",
+    "doctor": "rm -rf node_modules && npm cache clean && npm install && npm run dev",
     "lint": "eslint ./src/ --ext .js",
     "lint:fix": "npm run lint -- --fix",
     "test": "NODE_ENV=production karma start ./bin/karma.js",
     "test:watch": "watch 'npm run test' ./tests/",
     "test:coverage": "npm run test -- --coverage",
-    "doctor": "rm -rf node_modules && npm cache clean && npm install && npm run dev",
     "clean": "rimraf ./dist",
     "compile": "NODE_ENV=production DEBUG=app:* webpack -p --config ./config/webpack.prod.config.js --progress",
     "deploy": "npm run test && npm run clean && npm run compile",
