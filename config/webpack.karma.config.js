@@ -6,11 +6,22 @@ const config = {
     devtool: 'inline-source-map',
 
     module: {
-        loaders: [{
+        loaders: [
+          {
             test: /\.js$/,
             exclude: /(test|node_modules)\//,
             loader: 'babel'
-        }],
+          },
+          {
+            test: /\.scss$/,
+            exclude: /node_modules/,
+            loaders: [
+              'style-loader',
+              'css-loader',
+              'sass-loader'
+            ]
+          }
+        ],
 
         // Delays coverage til after tests are run,
         // fixing transpiled source coverage error
