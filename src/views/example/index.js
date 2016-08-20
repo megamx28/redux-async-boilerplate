@@ -5,18 +5,18 @@ import ExampleActions from 'actions/example';
 import List from 'components/List/List';
 import faker from 'faker';
 
+let stubs = [];
+
+for (let i = 0; i <= 6; i++) {
+  stubs.push({ name: faker.name.findName() });
+}
+
 class ExampleView extends React.Component {
 
   constructor(props) {
     super(props);
 
-    this.items = [];
-  }
-
-  componentDidMount() {
-    for (let i = 0; i <= 6; i++) {
-      this.items.push({ name: faker.name.findName() });
-    }
+    this.items = stubs;
   }
 
   render() {
