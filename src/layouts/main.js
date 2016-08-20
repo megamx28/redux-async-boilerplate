@@ -11,5 +11,5 @@ export default class MainLayout extends React.Component {
 }
 
 MainLayout.propTypes = {
-  children: React.Proptypes.node.isRequired
+  children: React.PropTypes.node.isRequired
 };
