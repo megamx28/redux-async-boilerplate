@@ -19,7 +19,7 @@ function callApi({ endpoint, method, data }, successCallback, errorCallback) {
     .catch(errorCallback);
 }
 
-export default store => dispatch => action => {
+export default store => dispatch => (action) => {
   const callAPI = action[CALL_API];
 
   if (!isRSAA(action)) {

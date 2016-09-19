@@ -17,7 +17,7 @@ AuthenticatedContainer.propTypes = {
   children: React.Proptypes.node.isRequired
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   currentUser: state.session.currentUser
 });
 
