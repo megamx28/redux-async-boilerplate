@@ -30,6 +30,7 @@
     "no-restricted-syntax": 0,
     "no-param-reassign": 0,
     "react/forbid-prop-types": 0,
-    "no-plusplus": 0
+    "no-plusplus": 0,
+    "react/jsx-boolean-value": 0
   }
 }
