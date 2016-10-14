@@ -1,6 +1,6 @@
 # Redux Async Boilerplate
 
-[![Build Status](https://travis-ci.org/shanedasilva/darklaunch.svg?branch=master)](https://travis-ci.org/shanedasilva/darklaunch)
+[![Build Status](https://travis-ci.org/shanedasilva/redux-async-boilerplate.svg?branch=master)](https://travis-ci.org/shanedasilva/redux-async-boilerplate)
 [![Code Climate](https://codeclimate.com/github/shanedasilva/redux-async-boilerplate/badges/gpa.svg)](https://codeclimate.com/github/shanedasilva/redux-async-boilerplate)
 [![Test Coverage](https://codeclimate.com/github/shanedasilva/redux-async-boilerplate/badges/coverage.svg)](https://codeclimate.com/github/shanedasilva/redux-async-boilerplate/coverage)
 [![dependencies](https://david-dm.org/shanedasilva/redux-async-boilerplate.svg)](https://david-dm.org/shanedasilva/redux-async-boilerplate)

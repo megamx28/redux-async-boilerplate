@@ -11,4 +11,8 @@ before_script:
   - npm install
 
 script:
-  - npm run test
+  - npm run lint
+  - npm run test:coverage
+
+after_success:
+  - CODECLIMATE_REPO_TOKEN=CODECLIMATE_REPO_TOKEN codeclimate-test-reporter < coverage/report-lcovonly.txt

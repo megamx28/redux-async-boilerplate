@@ -2,8 +2,11 @@ var webpack = require('webpack');
 var argv = require('yargs').argv;
 var webpackConfig = require('../config/webpack.karma.config');
 
-var reporters = ['mocha'];
-if (argv.coverage) reporters.push('coverage');
+var reporters = ['progress'];
+
+if (argv.coverage) {
+  reporters.push('coverage');
+}
 
 module.exports = function config (config) {
   config.set({
@@ -30,14 +33,13 @@ module.exports = function config (config) {
     reporters: reporters,
     webpack: webpackConfig,
     webpackServer: {
-      // Don't spam the console when running in karma!
       noInfo: true
     },
     coverageReporter: {
       dir: './../coverage/',
       reporters: [
         { type: 'text-summary' },
-        { type: 'html', subdir: 'html' }
+        { type: 'lcovonly', subdir: '.', file: 'report-lcovonly.txt' }
       ]
     }
   });
