@@ -1,0 +1,19 @@
+sudo: false
+
+language: node_js
+
+node_js:
+  - stable
+
+cache:
+  directories:
+    - node_modules
+
+before_script:
+  - npm install
+
+script:
+  - test
+
+after_success:
+  - node_modules/.bin/codecov
