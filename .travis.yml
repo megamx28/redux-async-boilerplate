@@ -1,5 +1,3 @@
-sudo: false
-
 language: node_js
 
 node_js:
@@ -13,7 +11,7 @@ before_script:
   - npm install
 
 script:
-  - test
+  - npm run test
 
 after_success:
   - node_modules/.bin/codecov
