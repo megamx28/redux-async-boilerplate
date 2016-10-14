@@ -5,7 +5,7 @@ var webpackConfig = require('../config/webpack.karma.config');
 var reporters = ['mocha'];
 if (argv.coverage) reporters.push('coverage');
 
-module.exports = function(config) {
+module.exports = function config (config) {
   config.set({
     browsers: ['PhantomJS'],
     // Just run once by default
@@ -36,7 +36,7 @@ module.exports = function(config) {
     coverageReporter: {
       dir: './../coverage/',
       reporters: [
-        { type : 'text-summary' },
+        { type: 'text-summary' },
         { type: 'html', subdir: 'html' }
       ]
     }

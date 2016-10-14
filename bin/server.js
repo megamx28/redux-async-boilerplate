@@ -13,7 +13,7 @@ new WebpackDevServer(webpack(config), {
   colors: true,
   stats: { colors: true },
   historyApiFallback: true
-}).listen(3000, 'localhost', function (err, result) {
+}).listen(3000, 'localhost', function response (err, result) {
   if (err) {
     debug('There was an error creating Webpack Dev Server: ' + err);
   }
