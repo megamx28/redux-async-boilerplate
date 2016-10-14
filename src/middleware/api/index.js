@@ -1,22 +1,24 @@
-import CALL_API from 'middleware/api/callApi';
-import {
-    serialiseObj,
-    getRequestHeaders,
-    isRSAA,
-    normalizeRSAARequest
-} from 'utils';
-import 'isomorphic-fetch';
+import request from 'superagent';
+import _ from 'lodash';
+import CALL_API from './callApi';
+import { isRSAA, normalizeRSAARequest } from '../../utils';
 
 function callApi({ endpoint, method, data }, successCallback, errorCallback) {
-  let params = getRequestHeaders();
+  let params = {};
 
   params.method = method || 'GET';
-  params.body = data ? serialiseObj(data) : null;
+  params.body = data;
 
-  fetch(endpoint, params)
-    .then(response => response.json())
-    .then(successCallback)
-    .catch(errorCallback);
+  request(params.method, endpoint)
+    .send(params.body)
+    .set('Accept', 'application/json')
+    .end((err, response) => {
+      if (err || !response.ok) {
+        return errorCallback(response.body.error);
+      }
+
+      return successCallback(response.body);
+    });
 }
 
 export default store => dispatch => (action) => {

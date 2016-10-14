@@ -35,7 +35,6 @@
     "debug": "^2.2.0",
     "dotenv": "2.0.0",
     "history": "4.3.0",
-    "isomorphic-fetch": "^2.2.1",
     "lodash": "4.16.2",
     "lodash.isplainobject": "^4.0.6",
     "react": "15.3.2",
@@ -47,6 +46,7 @@
     "redux-api-middleware": "^1.0.2",
     "redux-logger": "^2.6.1",
     "redux-thunk": "2.1.0",
+    "superagent": "^2.3.0",
     "yargs": "6.0.0"
   },
   "devDependencies": {
