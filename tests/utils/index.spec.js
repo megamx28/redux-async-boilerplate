@@ -4,7 +4,6 @@ import {
   createConstants,
   createReducer,
   serialiseObj,
-  getRequestHeaders,
   isRSAA,
   normalizeRSAARequest,
   validateRSAARequest
@@ -60,22 +59,6 @@ describe('Utils', () => {
       const state = reducer(undefined, {});
       expect(reducer(state, {type: 'YOLO'})).toEqual({someObj: 2});
     });
-  });
-
-  describe('getRequestHeaders', () => {
-    it('returns the expected headers array', () => {
-      localStorage.setItem('token', 'testToken');
-
-      const headers = getRequestHeaders();
-
-      expect(headers).toEqual({
-        'Content-Type': 'application/x-www-form-urlencoded',
-        'headers': {
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer {' + localStorage.getItem('token') + '}'
-        }
-      });
-    })
   });
 
   describe('isRSAA', () => {

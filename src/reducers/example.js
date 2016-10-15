@@ -1,8 +1,9 @@
-import { createReducer } from 'utils';
-import Constants from 'constants/example';
+import { createReducer } from '../utils';
+import Constants from '../constants/example';
 
 const initialState = {
-  users: []
+  users: [],
+  loading: false
 };
 
 export default createReducer(initialState, {

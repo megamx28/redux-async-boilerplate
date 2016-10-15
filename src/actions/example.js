@@ -1,5 +1,5 @@
-import Constants from 'constants/example';
-import CALL_API from 'middleware/api/callApi';
+import Constants from '../constants/example';
+import CALL_API from '../middleware/api/callApi';
 
 export default {
   example: () => {

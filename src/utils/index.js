@@ -1,16 +1,6 @@
 import isPlainObject from 'lodash.isplainobject';
 import CALL_API from '../middleware/api/callApi';
 
-export function getRequestHeaders() {
-  return {
-    'Content-Type': 'application/x-www-form-urlencoded',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer {${localStorage.getItem('token')}}`
-    }
-  };
-}
-
 export function createConstants(...constants) {
   return constants.reduce((acc, constant) => {
     acc[constant] = constant;
