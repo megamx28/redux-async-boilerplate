@@ -1,10 +1,8 @@
-import expect, { createSpy, spyOn, isSpy } from 'expect';
-
 import CALL_API from '../../src/middleware/api/callApi';
 import Constants from '../../src/constants/example';
 import ExampleActions from '../../src/actions/example';
 
-describe('Actions:Example', () => {
+describe('Example Actions', () => {
   describe('#example()', () => {
     it('returns action CALL_API info', () => {
       let action = ExampleActions.example();

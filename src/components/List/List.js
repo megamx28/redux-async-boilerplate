@@ -1,15 +1,29 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 
 import './List.scss';
 
-export default class List extends React.Component {
+export default class List extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this.handleOnClick = this.handleOnClick.bind(this);
+  }
+
+  handleOnClick(e) {
+    if (typeof this.props.onClick === 'function') {
+      this.props.onClick(e);
+    }
+  }
 
   render() {
     return (
       <ol className="list">
         {this.props.items.map((item, index) => {
           return (
-            <li key={index}>{item[this.props.displayKey]}</li>
+            <li key={index} onClick={this.handleOnClick}>
+              {item[this.props.displayKey]}
+            </li>
           );
         })}
       </ol>
@@ -21,11 +35,11 @@ export default class List extends React.Component {
 List.displayName = 'List';
 
 List.propTypes = {
-  items: React.PropTypes.array.isRequired,
-  displayKey: React.PropTypes.string.isRequired
+  items: PropTypes.array,
+  onClick: PropTypes.func,
+  displayKey: PropTypes.string.isRequired
 };
 
 List.defaultProps = {
-  items: [],
-  displayKey: List.displayName
+  items: []
 };

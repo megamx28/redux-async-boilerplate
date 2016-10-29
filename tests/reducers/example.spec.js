@@ -1,9 +1,7 @@
-import expect, { createSpy, spyOn, isSpy } from 'expect';
-
 import Constants from '../../src/constants/example';
 import ExampleReducer from '../../src/reducers/example';
 
-describe('Reducer:Example', () => {
+describe('Example Reducer', () => {
   it('returns the initial state if the action is unknown', () => {
     let newState = ExampleReducer(undefined, {});
 

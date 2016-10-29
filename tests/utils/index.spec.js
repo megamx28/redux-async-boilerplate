@@ -1,9 +1,7 @@
-import expect from 'expect';
 import CALL_API from './../../src/middleware/api/callApi';
 import {
   createConstants,
   createReducer,
-  serialiseObj,
   isRSAA,
   normalizeRSAARequest,
   validateRSAARequest
@@ -108,7 +106,7 @@ describe('Utils', () => {
         method: null,
         data: null
       });
-  });
+    });
 
     it('returns action with optional types if they dont exist', () => {
       const action = {

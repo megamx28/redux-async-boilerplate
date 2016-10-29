@@ -11,7 +11,9 @@
   "globals": {
     "__DEV__": false,
     "__PROD": false,
-    "__DEBUG__": false
+    "__DEBUG__": false,
+    "it": false,
+    "expect": false
   },
   "rules": {
     "import/no-extraneous-dependencies": 0,

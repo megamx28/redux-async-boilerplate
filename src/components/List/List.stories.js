@@ -1,5 +1,5 @@
 import React from 'react';
-import { storiesOf } from '@kadira/storybook';
+import { storiesOf, action } from '@kadira/storybook';
 import faker from 'faker';
 import List from './List';
 
@@ -14,6 +14,6 @@ storiesOf('List', module)
         `
           This is the basic list component that accepts an array of list items.
         `,
-        () => (<List items={items} displayKey="name" />),
+        () => (<List displayKey="name" items={items} onClick={action('clicked!')} />),
         { inline: false, propTables: [List] }
     );
