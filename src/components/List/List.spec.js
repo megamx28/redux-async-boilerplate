@@ -32,13 +32,13 @@ describe('List Component', () => {
     expect(component.find('li').at(1).text()).toBe(items[1].name);
   });
 
-  it('will trigger the LI onClick if prop is provided', () => {
+  it('will trigger the li onClick if prop is provided', () => {
     const component = shallow(element);
     component.find('li').at(0).simulate('click');
     expect(onClickSpy.calledOnce).toBe(true);
   });
 
-  it('wont trigger the LI onClick if prop is provided', () => {
+  it('wont trigger the li onClick if prop is provided', () => {
     const component = shallow(<List displayKey="name" items={items} />);
     component.find('li').at(0).simulate('click');
     expect(onClickSpy.calledOnce).toBe(false);
