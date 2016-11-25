@@ -1,8 +1,9 @@
 import React, { Component, PropTypes } from 'react';
+import themerReact from '../../decorators';
 
 import './List.scss';
 
-export default class List extends Component {
+class List extends Component {
 
   constructor(props) {
     super(props);
@@ -43,3 +44,5 @@ List.propTypes = {
 List.defaultProps = {
   items: []
 };
+
+export default themerReact(() => true, [])(List);
