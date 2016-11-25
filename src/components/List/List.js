@@ -3,7 +3,7 @@ import themerReact from '../../decorators';
 
 import './List.scss';
 
-class List extends Component {
+export default class List extends Component {
 
   constructor(props) {
     super(props);
@@ -44,5 +44,3 @@ List.propTypes = {
 List.defaultProps = {
   items: []
 };
-
-export default themerReact(() => true, [])(List);
