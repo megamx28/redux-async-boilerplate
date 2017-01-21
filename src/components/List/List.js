@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react';
-import themerReact from '../../decorators';
 
 import './List.scss';
 
