@@ -1,4 +1,9 @@
+sudo: false
+
 language: node_js
+
+notifications:
+  email: false
 
 node_js:
   - stable
@@ -8,10 +13,17 @@ cache:
     - node_modules
 
 before_script:
-  - npm install
+  - npm prune
 
 script:
+  - npm run lint
+  - npm run flow
   - npm run test:coverage
+  - npm run build
 
 after_success:
   - CODECLIMATE_REPO_TOKEN=CODECLIMATE_REPO_TOKEN codeclimate-test-reporter < coverage/report-lcovonly.txt
+
+branches:
+  only:
+    - master
