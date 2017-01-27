@@ -5,7 +5,10 @@ import List from './List';
 
 var items = [];
 for (let i = 0; i <= 6; i++) {
-  items.push({ name: faker.name.findName() });
+  items.push({
+    id: i,
+    name: faker.name.findName(),
+  });
 }
 
 storiesOf('List', module)
