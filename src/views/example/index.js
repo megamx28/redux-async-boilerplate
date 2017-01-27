@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import ExampleActions from 'actions/example';
@@ -8,10 +8,13 @@ import faker from 'faker';
 let stubs = [];
 
 for (let i = 0; i <= 6; i++) {
-  stubs.push({ name: faker.name.findName() });
+  stubs.push({
+    id: i,
+    name: faker.name.findName(),
+  });
 }
 
-class ExampleView extends React.Component {
+class ExampleView extends Component {
 
   constructor(props) {
     super(props);
@@ -30,7 +33,7 @@ class ExampleView extends React.Component {
 }
 
 ExampleView.propTypes = {
-  actions: React.PropTypes.object
+  actions: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => {

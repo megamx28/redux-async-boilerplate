@@ -1,18 +1,14 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import sinon from 'sinon';
 import List from './List';
 
-const items = [{'name': 'John Doe'}, {'name': 'Jane Doe'}];
-let onClickSpy;
+const items = [{ id: 1, name: 'John Doe' }, { id: 2, name: 'Jane Doe' }];
 let element;
 
 describe('List Component', () => {
   beforeEach(() => {
-    onClickSpy = sinon.spy();
-
     element = (
-      <List displayKey="name" items={items} onClick={onClickSpy} />
+      <List displayKey="name" items={items} />
     );
   });
 
@@ -30,17 +26,5 @@ describe('List Component', () => {
     const component = shallow(element);
     expect(component.find('li').at(0).text()).toBe(items[0].name);
     expect(component.find('li').at(1).text()).toBe(items[1].name);
-  });
-
-  it('will trigger the li onClick if prop is provided', () => {
-    const component = shallow(element);
-    component.find('li').at(0).simulate('click');
-    expect(onClickSpy.calledOnce).toBe(true);
-  });
-
-  it('wont trigger the li onClick if prop is provided', () => {
-    const component = shallow(<List displayKey="name" items={items} />);
-    component.find('li').at(0).simulate('click');
-    expect(onClickSpy.calledOnce).toBe(false);
   });
 });
