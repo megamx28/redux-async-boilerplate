@@ -26,8 +26,8 @@
     "commitmsg": "validate-commit-msg",
     "compile": "NODE_ENV=production DEBUG=app:* webpack -p --config ./config/webpack.prod.config.js --progress",
     "deploy": "npm run test && rimraf ./dist && npm run compile",
-    "precommit": "npm run lint && npm run test",
-    "release": "semantic-release pre && semantic-release post",
+    "precommit": "npm run test",
+    "release": "semantic-release pre && semantic-release post"
   },
   "jest": {
     "coverageThreshold": {
