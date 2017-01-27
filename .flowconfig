@@ -1,4 +1,8 @@
 [ignore]
 .*/node_modules/npmconf/.*
+.*/node_modules/config-chain/.*
+.*/node_modules/fbjs/.*
+.*/node_modules/findup/.*
+.*/node_modules/stylelint/.*
 .*/coverage/.*
 .*/flow-coverage/.*
