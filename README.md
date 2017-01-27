@@ -5,6 +5,7 @@
 [![Test Coverage](https://codeclimate.com/github/shanedasilva/redux-async-boilerplate/badges/coverage.svg)](https://codeclimate.com/github/shanedasilva/redux-async-boilerplate/coverage)
 [![dependencies](https://david-dm.org/shanedasilva/redux-async-boilerplate.svg)](https://david-dm.org/shanedasilva/redux-async-boilerplate)
 [![devDependency Status](https://david-dm.org/shanedasilva/redux-async-boilerplate/dev-status.svg)](https://david-dm.org/shanedasilva/redux-async-boilerplate#info=devDependencies)
+[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 
 Redux Async Boilerplate is an enterprise level boilerplate application. it provides a modern development environment and build process so you can skip the setup and get started building out your application.
 
