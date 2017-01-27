@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow, mount } from 'enzyme';
 import List from './List';
 
-const items = [{ id: 1, name: 'John Doe' }, { id: 2, name: 'Jane Doe' }];
+const items = [{ id: 2, name: 'John Doe' }, { id: 3, name: 'Jane Doe' }];
 let element;
 
 describe('List Component', () => {
