@@ -3,19 +3,22 @@ language: node_js
 node_js:
   - stable
 
+notifications:
+  email: false
+
 cache:
   directories:
     - node_modules
 
 before_script:
-  - npm install
+  - npm prune
 
 script:
   - npm run lint
   - npm run test:coverage
   - npm run build
-  - npm run release
 
 after_success:
+  - npm run release
   - CODECLIMATE_REPO_TOKEN=CODECLIMATE_REPO_TOKEN codeclimate-test-reporter < coverage/report-lcovonly.txt
 
