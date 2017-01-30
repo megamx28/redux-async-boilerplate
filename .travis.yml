@@ -1,14 +1,14 @@
 language: node_js
 
-node_js:
-  - stable
+cache:
+  directories:
+    - node_modules
 
 notifications:
   email: false
 
-cache:
-  directories:
-    - node_modules
+node_js:
+  - stable
 
 before_script:
   - npm prune
@@ -19,6 +19,9 @@ script:
   - npm run build
 
 after_success:
-  - npm run release
+  - npm run semantic-release
   - CODECLIMATE_REPO_TOKEN=CODECLIMATE_REPO_TOKEN codeclimate-test-reporter < coverage/report-lcovonly.txt
 
+branches:
+  except:
+    - /^v\d+\.\d+\.\d+$/

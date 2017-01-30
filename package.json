@@ -1,6 +1,6 @@
 {
   "name": "redux-async-boilerplate",
-  "version": "1.0.0",
+  "version": "0.0.0-development",
   "description": "Redux Async Boilerplate",
   "homepage": "https://github.com/shanedasilva/redux-async-boilerplate",
   "main": "src/index.js",
@@ -27,7 +27,7 @@
     "compile": "NODE_ENV=production DEBUG=app:* webpack -p --config ./config/webpack.prod.config.js --progress",
     "build": "npm run test && rimraf ./dist && npm run compile",
     "precommit": "npm run lint && npm run test",
-    "release": "semantic-release pre && semantic-release post"
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "jest": {
     "coverageThreshold": {
