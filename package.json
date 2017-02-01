@@ -41,7 +41,10 @@
     "unmockedModulePathPatterns": [
       "node_modules/react/",
       "node_modules/enzyme/"
-    ]
+    ],
+    "moduleNameMapper": {
+      "\\.(css|scss)$": "<rootDir>/tests/stubs/styles.js"
+    }
   },
   "config": {
     "commitizen": {
