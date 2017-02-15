@@ -6,12 +6,11 @@ const debug = require('debug')('app:webpack:production');
 
 debug('Reading Production Config.');
 
-debug('Setting Input Paths.');
+debug('Setting output path.');
 
 config.output = {
-  path: path.join(__dirname, '/../dist'),
-  filename: 'bundle.js',
-  publicPath: 'http://localhost:3000/static/'
+  filename: '[name].[hash].js',
+  path: path.join(__dirname, '../dist')
 };
 
 debug('Uglifying Source Code.');

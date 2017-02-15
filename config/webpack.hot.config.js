@@ -8,18 +8,10 @@ debug('Reading Hot Config.');
 
 debug('Setting Input Paths.');
 
-config.entry.push(
-  'webpack-dev-server/client?http://localhost:3000',
-  'webpack/hot/only-dev-server'
-);
-
-debug('Seting Output Paths.');
-
-config.output = {
-  path: path.join(__dirname, '/../dist'),
-  filename: 'bundle.js',
-  publicPath: 'http://localhost:3000/static/'
-};
+// config.entry.push(
+//   'webpack-dev-server/client?http://localhost:3000',
+//   'webpack/hot/only-dev-server'
+// );
 
 debug('Initializing Plugins.');
 
