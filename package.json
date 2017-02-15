@@ -24,7 +24,7 @@
     "storybook:deploy": "storybook-to-ghpages",
     "commit": "git-cz",
     "commitmsg": "validate-commit-msg",
-    "compile": "NODE_ENV=production DEBUG=app:* webpack -p --config ./config/webpack.prod.config.js --progress",
+    "compile": "NODE_ENV=production DEBUG=app:* webpack -p --config ./config/webpack.prod.config.js",
     "build": "npm run test && rimraf ./dist && npm run compile",
     "precommit": "npm run lint && npm run test",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
