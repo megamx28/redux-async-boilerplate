@@ -33,7 +33,7 @@ class ExampleView extends Component {
 }
 
 ExampleView.propTypes = {
-  actions: PropTypes.object.isRequired,
+  exampleActions: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => {
