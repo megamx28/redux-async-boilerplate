@@ -1,7 +1,8 @@
-var path = require('path');
-var webpack = require('webpack');
-var argv = require('yargs').argv;
-var StyleLintPlugin = require('stylelint-webpack-plugin');
+const path = require('path');
+const webpack = require('webpack');
+const argv = require('yargs').argv;
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const StyleLintPlugin = require('stylelint-webpack-plugin');
 
 const debug = require('debug')('app:webpack:base');
 
@@ -12,14 +13,25 @@ const config = {
 
   devtool: 'cheap-module-eval-source-map',
 
-  entry: [
-    path.join(__dirname, '/../src/index.js')
-  ],
+  /**
+   * Entry tells webpack where to start looking.
+   */
+  entry: {
+    app: path.join(__dirname, '/../src'),
+    vendor: [
+      'react',
+      'react-dom',
+      'react-router'
+    ]
+  },
 
+  /**
+   * Output tells webpack where to dump the files it has processed.
+   * [name].[hash].js will output something like app.3531f6aad069a0e8dc0e.js
+   */
   output: {
-    paht: path.join(__dirname, '/../dist'),
-    filename: 'bundle.js',
-    publicPath: 'http://localhost:3000/static/'
+    filename: '[name].[hash].js',
+    path: path.join(__dirname, '../dist/')
   },
 
   resolve: {
@@ -67,18 +79,48 @@ const config = {
 };
 
 config.plugins = [
+
+  /**
+   * Used to split out our specific vendor script
+   */
+  new webpack.optimize.CommonsChunkPlugin({
+    name: 'vendor',
+    minChunks: Infinity,
+    filename: '[name].[hash].js',
+  }),
+
+  /**
+   * HtmlWebpackPlugin will make sure out JavaScript files are being called
+   * from within our index.html
+   */
+  new HtmlWebpackPlugin({
+    template: path.join(__dirname, '../index.html'),
+    filename: 'index.html',
+    inject: 'body',
+    cache: true,
+    minify: {
+      caseSensitive: true,
+      html5: true,
+      collapseWhitespace: true,
+      removeComments: true
+    }
+  }),
+
   new StyleLintPlugin({
     configFile: '.stylelintrc',
     files: '../src/**/*.scss',
     failOnError: false
   }),
+
   new webpack.DefinePlugin({
     __DEV__: process.env.NODE_ENV === 'development',
     __PROD__: process.env.NODE_ENV === 'production'
   }),
+
   new webpack.LoaderOptionsPlugin({
     debug: false
   })
+
 ];
 
 module.exports = config;
