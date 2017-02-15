@@ -5,13 +5,14 @@ cache:
     - node_modules
 
 notifications:
-  email: false
+  email: true
 
 node_js:
   - stable
 
 before_script:
   - npm prune
+  - npm install -g codeclimate-test-reporter
 
 script:
   - npm run lint
