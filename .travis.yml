@@ -21,7 +21,7 @@ script:
 
 after_success:
   - npm run semantic-release
-  - CODECLIMATE_REPO_TOKEN=CODECLIMATE_REPO_TOKEN codeclimate-test-reporter < coverage/report-lcovonly.txt
+  - CODECLIMATE_REPO_TOKEN=CODECLIMATE_REPO_TOKEN codeclimate-test-reporter < coverage/lcov.info
 
 branches:
   except:
