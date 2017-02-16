@@ -12,6 +12,7 @@ node_js:
 
 before_script:
   - npm prune
+  - npm install -g codeclimate-test-reporter
 
 script:
   - npm run lint
