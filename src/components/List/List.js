@@ -6,7 +6,7 @@ export default class List extends Component {
 
   render() {
     return (
-      <ol className="list">
+      <ol className="rc-list">
         {this.props.items.map((item, index) => {
           return (
             <li key={item.id}>

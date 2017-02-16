@@ -14,7 +14,7 @@ describe('List Component', () => {
 
   it('renders the list element', () => {
     const component = shallow(element);
-    expect(component.is('.list')).toBe(true);
+    expect(component.is('.rc-list')).toBe(true);
   });
 
   it('renders the correct number of li elements', () => {

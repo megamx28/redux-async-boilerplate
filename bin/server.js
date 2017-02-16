@@ -10,12 +10,13 @@ new WebpackDevServer(webpack(config), {
   publicPath: config.output.publicPath,
   hot: true,
   quiet: false,
-  colors: true,
-  stats: { colors: true },
+  stats: {
+    colors: true
+  },
   historyApiFallback: true
-}).listen(3000, 'localhost', function response (err, result) {
+}).listen(3000, 'localhost', (err, result) => {
   if (err) {
-    debug('There was an error creating Webpack Dev Server: ' + err);
+    debug(`There was an error creating Webpack Dev Server: ${err}`);
   }
 
   debug('Listening at localhost:3000');
