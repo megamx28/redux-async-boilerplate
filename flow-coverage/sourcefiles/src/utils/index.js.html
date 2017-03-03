@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"/><link rel="stylesheet" href="../../../assets/semantic.min.css"/><link rel="stylesheet" href="../../../assets/codemirror.css"/><link rel="stylesheet" href="../../../assets/flow-highlight-source.css"/><link rel="stylesheet" href="../../../assets/flow-coverage-report.css"/><link rel="stylesheet" href="../../../assets/codemirror-simplescrollbars-addon.css"/><script src="../../../assets/jquery-3.1.0.min.js"></script><script src="../../../assets/semantic.min.js"></script><script src="../../../assets/semantic-tablesort.js"></script><script src="../../../assets/codemirror.js"></script><script src="../../../assets/codemirror-javascript-mode.js"></script><script src="../../../assets/codemirror-annotatescrollbar-addon.js"></script><script src="../../../assets/codemirror-simplescrollbars-addon.js"></script><script src="../../../assets/flow-highlight-source.js"></script><script src="../../../assets/index.js"></script><style>
+.ui .CodeMirror {
+  border: 1px solid rgba(34,36,38,.15);
+  height: auto;
+}
+</style></head><body><div class="ui grid container"><div class="row"><div class="twelve wide column"><h2 class="ui header"><a href="../../../index.html" id="link-to-summary">Flow Coverage Report</a></h2></div></div><div class="row"><table class="ui small celled unstackable table"><thead><tr><th class="sorted ascending">Filename</th><th>Percent</th><th>Total</th><th>Covered</th><th>Uncovered</th></tr></thead><tbody><tr class="positive"><td class="">./src/utils/index.js</td><td><span>86 %</span></td><td> 76 </td><td> 66 </td><td> 10 </td></tr></tbody></table></div><div class="row ui one column centered grid"><div class="column" style="text-align:left;"><div class="row"><div class="ui form"><div class="fields"><div class="sixteen wide inline field"><select class="ui search dropdown uncovered-locations"><option value="">Uncovered Locations</option><option value="26">Start: 26,11 - End: 26,17</option><option value="26">Start: 26,21 - End: 26,31</option><option value="27">Start: 27,12 - End: 27,18</option><option value="27">Start: 27,22 - End: 27,28</option><option value="27">Start: 27,22 - End: 27,44</option><option value="38">Start: 38,10 - End: 38,22</option><option value="38">Start: 38,10 - End: 38,30</option><option value="38">Start: 38,66 - End: 38,73</option><option value="49">Start: 49,10 - End: 49,17</option><option value="49">Start: 49,10 - End: 49,56</option></select></div><div class="four wide inline field"><select class="ui search dropdown syntax-highlighting"><option value="es">ES6/ES7</option><option value="js">JavaScript</option><option value="no">None</option></select></div></div></div></div><textarea id="file-content" readonly="">/* @flow */
+
+import { includes, isPlainObject } from &#x27;lodash&#x27;;
+import CALL_API from &#x27;../middleware/api/callApi&#x27;;
+
+/**
+ *  Accepts a variable number of string arguments and returns a maps of redux constants.
+ *
+ * @param  {...string} constants Variable number of strings to convert to constant map
+ * @return {object}              Object of constants
+ */
+export function createConstants(...constants: Array&lt;string&gt;): Object {
+  return constants.reduce((acc, constant) =&gt; Object.assign(acc, { [constant]: constant }), {});
+}
+
+/**
+ * Converts an associative array of type constant|function into a redux ready
+ * map of reducer functions
+ *
+ * @param  {object}   initialState The intial reducer object
+ * @param  {array}    fnMap        Associative array of reducer functions
+ * @return {function}              Redux ready reducer map
+ */
+export function createReducer(initialState: Object, fnMap: Object): Function|Object {
+  return (state: Object = initialState, { type, payload }: { type: string, payload: Object }) =&gt; {
+    const handler = fnMap[type];
+    return handler ? handler(state, payload) : state;
+  };
+}
+
+/**
+ * Validates that a given action is a &quot;Redux Standard API-calling Actions&quot;
+ *
+ * @param  {object}  action The Redux action to validate
+ * @return {boolean}        If the action is or isn&#x27;t a RSAA
+ */
+export function isRSAA(action: Object): boolean {
+  return isPlainObject(action) &amp;&amp; {}.hasOwnProperty.call(action, CALL_API);
+}
+
+/**
+ * Validates that a given action contains all of the required properties.
+ * If something is missing, it throws an error.
+ *
+ * @param  {object}  obj The action object to validate
+ * @return {boolean}     If the action is valid
+ */
+export function validateRSAARequest(obj: { types: Array&lt;string&gt;, endpoint: string }): boolean {
+  return includes(Object.keys(obj), &#x27;endpoint&#x27;, &#x27;types&#x27;);
+}
+
+/**
+ * Checks that given action conforms to the expected format.
+ *
+ * @param  {object} obj The action object to normalize
+ * @return {object}     The normalized object
+ */
+export function normalizeRSAARequest(obj: Object): Object {
+  const optionalTypes = [&#x27;method&#x27;, &#x27;data&#x27;];
+
+  if (validateRSAARequest(obj)) {
+    optionalTypes.forEach((key: string): void =&gt; {
+      if (!{}.hasOwnProperty.call(obj, key)) {
+        Object.assign(obj, { [key]: null });
+      }
+    });
+  }
+
+  return obj;
+}
+</textarea></div></div><div class="row centered"><footer>Flow Coverage Report generated by<a href="https://flowtype.org"> flow </a>and<a href="https://github.com/rpl/flow-coverage-report"> flow-coverage-report </a>at Fri Mar 03 2017 10:44:03 GMT-0800 (PST)</footer></div></div><pre id="file-coverage-data" style="display:none;">{&quot;expressions&quot;:{&quot;covered_count&quot;:66,&quot;uncovered_count&quot;:10,&quot;uncovered_locs&quot;:[{&quot;source&quot;:&quot;/Users/dassh06/Sites/redux-async-boilerplate/src/utils/index.js&quot;,&quot;type&quot;:&quot;SourceFile&quot;,&quot;start&quot;:{&quot;line&quot;:26,&quot;column&quot;:11,&quot;offset&quot;:1030},&quot;end&quot;:{&quot;line&quot;:26,&quot;column&quot;:17,&quot;offset&quot;:1037}},{&quot;source&quot;:&quot;/Users/dassh06/Sites/redux-async-boilerplate/src/utils/index.js&quot;,&quot;type&quot;:&quot;SourceFile&quot;,&quot;start&quot;:{&quot;line&quot;:26,&quot;column&quot;:21,&quot;offset&quot;:1040},&quot;end&quot;:{&quot;line&quot;:26,&quot;column&quot;:31,&quot;offset&quot;:1051}},{&quot;source&quot;:&quot;/Users/dassh06/Sites/redux-async-boilerplate/src/utils/index.js&quot;,&quot;type&quot;:&quot;SourceFile&quot;,&quot;start&quot;:{&quot;line&quot;:27,&quot;column&quot;:12,&quot;offset&quot;:1064},&quot;end&quot;:{&quot;line&quot;:27,&quot;column&quot;:18,&quot;offset&quot;:1071}},{&quot;source&quot;:&quot;/Users/dassh06/Sites/redux-async-boilerplate/src/utils/index.js&quot;,&quot;type&quot;:&quot;SourceFile&quot;,&quot;start&quot;:{&quot;line&quot;:27,&quot;column&quot;:22,&quot;offset&quot;:1074},&quot;end&quot;:{&quot;line&quot;:27,&quot;column&quot;:28,&quot;offset&quot;:1081}},{&quot;source&quot;:&quot;/Users/dassh06/Sites/redux-async-boilerplate/src/utils/index.js&quot;,&quot;type&quot;:&quot;SourceFile&quot;,&quot;start&quot;:{&quot;line&quot;:27,&quot;column&quot;:22,&quot;offset&quot;:1074},&quot;end&quot;:{&quot;line&quot;:27,&quot;column&quot;:44,&quot;offset&quot;:1097}},{&quot;source&quot;:&quot;/Users/dassh06/Sites/redux-async-boilerplate/src/utils/index.js&quot;,&quot;type&quot;:&quot;SourceFile&quot;,&quot;start&quot;:{&quot;line&quot;:38,&quot;column&quot;:10,&quot;offset&quot;:1378},&quot;end&quot;:{&quot;line&quot;:38,&quot;column&quot;:22,&quot;offset&quot;:1391}},{&quot;source&quot;:&quot;/Users/dassh06/Sites/redux-async-boilerplate/src/utils/index.js&quot;,&quot;type&quot;:&quot;SourceFile&quot;,&quot;start&quot;:{&quot;line&quot;:38,&quot;column&quot;:10,&quot;offset&quot;:1378},&quot;end&quot;:{&quot;line&quot;:38,&quot;column&quot;:30,&quot;offset&quot;:1399}},{&quot;source&quot;:&quot;/Users/dassh06/Sites/redux-async-boilerplate/src/utils/index.js&quot;,&quot;type&quot;:&quot;SourceFile&quot;,&quot;start&quot;:{&quot;line&quot;:38,&quot;column&quot;:66,&quot;offset&quot;:1434},&quot;end&quot;:{&quot;line&quot;:38,&quot;column&quot;:73,&quot;offset&quot;:1442}},{&quot;source&quot;:&quot;/Users/dassh06/Sites/redux-async-boilerplate/src/utils/index.js&quot;,&quot;type&quot;:&quot;SourceFile&quot;,&quot;start&quot;:{&quot;line&quot;:49,&quot;column&quot;:10,&quot;offset&quot;:1789},&quot;end&quot;:{&quot;line&quot;:49,&quot;column&quot;:17,&quot;offset&quot;:1797}},{&quot;source&quot;:&quot;/Users/dassh06/Sites/redux-async-boilerplate/src/utils/index.js&quot;,&quot;type&quot;:&quot;SourceFile&quot;,&quot;start&quot;:{&quot;line&quot;:49,&quot;column&quot;:10,&quot;offset&quot;:1789},&quot;end&quot;:{&quot;line&quot;:49,&quot;column&quot;:56,&quot;offset&quot;:1836}}]},&quot;filename&quot;:&quot;./src/utils/index.js&quot;,&quot;percent&quot;:86}</pre></body></html>

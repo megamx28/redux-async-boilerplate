@@ -7,7 +7,7 @@ export default class List extends Component {
   render() {
     return (
       <ol className="rc-list">
-        {this.props.items.map((item, index) => {
+        {this.props.items.map((item) => {
           return (
             <li key={item.id}>
               {item[this.props.displayKey]}
@@ -24,9 +24,9 @@ List.displayName = 'List';
 
 List.propTypes = {
   items: PropTypes.array,
-  displayKey: PropTypes.string.isRequired
+  displayKey: PropTypes.string.isRequired,
 };
 
 List.defaultProps = {
-  items: []
+  items: [],
 };

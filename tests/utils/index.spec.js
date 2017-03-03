@@ -4,7 +4,7 @@ import {
   createReducer,
   isRSAA,
   normalizeRSAARequest,
-  validateRSAARequest
+  validateRSAARequest,
 } from './../../src/utils';
 
 describe('Utils', () => {
@@ -17,7 +17,7 @@ describe('Utils', () => {
 
       expect(constants).toEqual({
         ROLES_REQUEST: 'ROLES_REQUEST',
-        ROLES_REQUEST_SUCCESS: 'ROLES_REQUEST_SUCCESS'
+        ROLES_REQUEST_SUCCESS: 'ROLES_REQUEST_SUCCESS',
       });
     });
   });
@@ -27,35 +27,37 @@ describe('Utils', () => {
       const reducerMap = {};
       const reducer = createReducer('theintialstate', reducerMap);
 
-      expect(reducer(undefined, {type: 'YOLO'})).toEqual('theintialstate');
+      expect(reducer(undefined, { type: 'YOLO' })).toEqual('theintialstate');
     });
 
     it('returns the correct state on the first call with a matches', () => {
       const reducerMap = {
-        YOLO: () => 'theproperstate'
+        YOLO: () => 'theproperstate',
       };
       const reducer = createReducer('theintialstate', reducerMap);
 
-      expect(reducer(undefined, {type: 'YOLO'})).toEqual('theproperstate');
+      expect(reducer(undefined, { type: 'YOLO' })).toEqual('theproperstate');
     });
 
     it('returns the same state if no value matched', () => {
       const reducerMap = {};
-      const reducer = createReducer({someObj: true}, reducerMap);
-      const state = reducer(undefined, {type: 'YOLO'});
+      const reducer = createReducer({ someObj: true }, reducerMap);
+      const state = reducer(undefined, { type: 'YOLO' });
 
-      expect(reducer(state, {type: 'YOLO'})).toEqual(state);
+      expect(reducer(state, { type: 'YOLO' })).toEqual(state);
     });
 
     it('returns a new state if a value matched', () => {
       const reducerMap = {
-        YOLO: () => {
-          return {someObj: 2}
-        }
+        YOLO: () => ({
+          someObj: 2,
+        }),
       };
-      const reducer = createReducer({someObj: 1}, reducerMap);
+
+      const reducer = createReducer({ someObj: 1 }, reducerMap);
       const state = reducer(undefined, {});
-      expect(reducer(state, {type: 'YOLO'})).toEqual({someObj: 2});
+
+      expect(reducer(state, { type: 'YOLO' })).toEqual({ someObj: 2 });
     });
   });
 
@@ -64,8 +66,8 @@ describe('Utils', () => {
       const action = {
         [CALL_API]: {
           types: [],
-          endpoint: 'role/save/permissions'
-        }
+          endpoint: 'role/save/permissions',
+        },
       };
 
       expect(isRSAA(action)).toEqual(true);
@@ -74,7 +76,7 @@ describe('Utils', () => {
     it('return false when action does not have a CALL_API key', () => {
       const action = {
         types: [],
-        endpoint: 'role/save/permissions'
+        endpoint: 'role/save/permissions',
       };
 
       expect(isRSAA(action)).toEqual(false);
@@ -84,8 +86,8 @@ describe('Utils', () => {
       const action = [{
         [CALL_API]: {
           types: [],
-          endpoint: 'role/save/permissions'
-        }
+          endpoint: 'role/save/permissions',
+        },
       }];
 
       expect(isRSAA(action)).toEqual(false);
@@ -96,7 +98,7 @@ describe('Utils', () => {
     it('returns action with optional types if they dont exist', () => {
       const action = {
         types: ['pending', 'success', 'failure'],
-        endpoint: 'role/save/permissions'
+        endpoint: 'role/save/permissions',
       };
       const normalizedRequest = normalizeRSAARequest(action);
 
@@ -104,7 +106,18 @@ describe('Utils', () => {
         types: ['pending', 'success', 'failure'],
         endpoint: 'role/save/permissions',
         method: null,
-        data: null
+        data: null,
+      });
+    });
+
+    it('returns action as is', () => {
+      const action = {
+        types: ['pending', 'success', 'failure'],
+      };
+      const normalizedRequest = normalizeRSAARequest(action);
+
+      expect(normalizedRequest).toEqual({
+        types: ['pending', 'success', 'failure'],
       });
     });
 
@@ -113,7 +126,7 @@ describe('Utils', () => {
         types: ['pending', 'success', 'failure'],
         endpoint: 'role/save/permissions',
         method: 'POST',
-        data: {test: 'test'}
+        data: { test: 'test' },
       };
       const normalizedRequest = normalizeRSAARequest(action);
 
@@ -121,7 +134,7 @@ describe('Utils', () => {
         types: ['pending', 'success', 'failure'],
         endpoint: 'role/save/permissions',
         method: 'POST',
-        data: {test: 'test'}
+        data: { test: 'test' },
       });
     });
   });
@@ -132,41 +145,20 @@ describe('Utils', () => {
         types: ['pending', 'success', 'failure'],
         endpoint: 'role/save/permissions',
         method: 'POST',
-        data: {test: 'test'}
+        data: { test: 'test' },
       };
 
       expect(validateRSAARequest(action)).toEqual(true);
     });
 
-    it('throws an error if types key doesnt exist', () => {
+    it('returns false if types key doesnt exist', () => {
       const action = {
         types: ['pending', 'success', 'failure'],
         method: 'POST',
-        data: {test: 'test'}
+        data: { test: 'test' },
       };
 
-      expect(() => validateRSAARequest(action)).toThrow();
-    });
-
-    it('throws an error if key types.length !== 3', () => {
-      const action = {
-        types: ['pending', 'success'],
-        endpoint: 'role/save/permissions',
-        method: 'POST',
-        data: {test: 'test'}
-      };
-
-      expect(() => validateRSAARequest(action)).toThrow();
-    });
-
-    it('throws an error if endpoint key doesnt exist', () => {
-      const action = {
-        endpoint: 'role/save/permissions',
-        method: 'POST',
-        data: {test: 'test'}
-      };
-
-      expect(() => validateRSAARequest(action)).toThrow();
+      expect(validateRSAARequest(action)).toEqual(false);
     });
   });
-})
+});
