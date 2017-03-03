@@ -35,19 +35,6 @@ const config = {
   },
 
   resolve: {
-    alias: {
-      actions: path.join(__dirname, '/../src/actions'),
-      components: path.join(__dirname, '/../src/components'),
-      constants: path.join(__dirname, '/../src/constants'),
-      containers: path.join(__dirname, '/../src/containers'),
-      layouts: path.join(__dirname, '/../src/layouts'),
-      middleware: path.join(__dirname, '/../src/middleware'),
-      routes: path.join(__dirname, '/../src/routes'),
-      reducers: path.join(__dirname, '/../src/reducers'),
-      store: path.join(__dirname, '/../src/store'),
-      utils: path.join(__dirname, '/../src/utils'),
-      views: path.join(__dirname, '/../src/views')
-    },
     extensions: ['.js', '.jsx']
   },
 

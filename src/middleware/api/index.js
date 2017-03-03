@@ -1,10 +1,9 @@
 import request from 'superagent';
-import _ from 'lodash';
 import CALL_API from './callApi';
 import { isRSAA, normalizeRSAARequest } from '../../utils';
 
 function callApi({ endpoint, method, data }, successCallback, errorCallback) {
-  let params = {};
+  const params = {};
 
   params.method = method || 'GET';
   params.body = data;
@@ -21,7 +20,7 @@ function callApi({ endpoint, method, data }, successCallback, errorCallback) {
     });
 }
 
-export default store => dispatch => (action) => {
+export default store => dispatch => (action) => { // eslint-disable-line no-unused-vars
   const callAPI = action[CALL_API];
 
   if (!isRSAA(action)) {
@@ -35,10 +34,10 @@ export default store => dispatch => (action) => {
 
   return callApi({ endpoint, method, data }, payload => dispatch({
     type: successType,
-    payload
+    payload,
   }), err => dispatch({
     type: failureType,
     error: err.message || 'Unknown',
-    status: (err.response && err.response.status) || 0
+    status: (err.response && err.response.status) || 0,
   }));
 };

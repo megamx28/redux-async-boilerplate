@@ -8,10 +8,10 @@ export default {
         types: [
           Constants.EXAMPLE_REQUEST,
           Constants.EXAMPLE_REQUEST_SUCCESS,
-          Constants.EXAMPLE_REQUEST_FAILURE
+          Constants.EXAMPLE_REQUEST_FAILURE,
         ],
-        endpoint: 'example'
-      }
+        endpoint: 'example',
+      },
     };
-  }
+  },
 };

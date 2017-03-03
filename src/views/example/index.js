@@ -1,20 +1,20 @@
 import React, { Component, PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import ExampleActions from 'actions/example';
-import List from 'components/List/List';
 import faker from 'faker';
+import ExampleActions from '../../actions/example';
+import List from '../../components/List/List';
 
-let stubs = [];
+const stubs = [];
 
-for (let i = 0; i <= 6; i++) {
+for (let i = 0; i <= 6; i += 1) {
   stubs.push({
     id: i,
     name: faker.name.findName(),
   });
 }
 
-class ExampleView extends Component {
+export class ExampleView extends Component {
 
   constructor(props) {
     super(props);
@@ -24,7 +24,7 @@ class ExampleView extends Component {
 
   render() {
     return (
-      <div>
+      <div className="rc-example-view">
         <List items={this.items} displayKey="name" />
       </div>
     );
@@ -38,12 +38,12 @@ ExampleView.propTypes = {
 
 const mapStateToProps = (state) => {
   return {
-    users: state.users
+    users: state.users,
   };
 };
 
 const mapDispatchToProps = dispatch => ({
-  exampleActions: bindActionCreators(ExampleActions, dispatch)
+  exampleActions: bindActionCreators(ExampleActions, dispatch),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ExampleView);
