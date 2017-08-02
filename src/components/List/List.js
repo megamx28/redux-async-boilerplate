@@ -1,9 +1,9 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import './List.scss';
 
 export default class List extends Component {
-
   render() {
     return (
       <ol className="rc-list">
@@ -17,7 +17,6 @@ export default class List extends Component {
       </ol>
     );
   }
-
 }
 
 List.displayName = 'List';

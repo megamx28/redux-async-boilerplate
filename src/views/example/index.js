@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import faker from 'faker';
@@ -15,7 +16,6 @@ for (let i = 0; i <= 6; i += 1) {
 }
 
 export class ExampleView extends Component {
-
   constructor(props) {
     super(props);
 
@@ -29,7 +29,6 @@ export class ExampleView extends Component {
       </div>
     );
   }
-
 }
 
 ExampleView.propTypes = {

@@ -1,8 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
-const argv = require('yargs').argv;
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const StyleLintPlugin = require('stylelint-webpack-plugin');
 
 const debug = require('debug')('app:webpack:base');
 
@@ -91,12 +89,6 @@ config.plugins = [
       collapseWhitespace: true,
       removeComments: true
     }
-  }),
-
-  new StyleLintPlugin({
-    configFile: '.stylelintrc',
-    files: '../src/**/*.scss',
-    failOnError: false
   }),
 
   new webpack.DefinePlugin({
