@@ -13,10 +13,10 @@ for (let i = 0; i <= 6; i += 1) {
 
 storiesOf('List', module)
   .addWithInfo(
-      'Basic List',
-      `
-        This is the basic list component that accepts an array of list items.
-      `,
-      () => (<List displayKey="name" items={items} onClick={action('clicked!')} />),
-      { inline: false, propTables: [List] },
+    'Basic List',
+    `
+      This is the basic list component that accepts an array of list items.
+    `,
+    () => (<List displayKey="name" items={items} onClick={action('clicked!')} />),
+    { inline: false, propTables: [List] },
   );

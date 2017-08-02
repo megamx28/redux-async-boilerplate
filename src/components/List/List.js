@@ -3,7 +3,6 @@ import React, { Component, PropTypes } from 'react';
 import './List.scss';
 
 export default class List extends Component {
-
   render() {
     return (
       <ol className="rc-list">
@@ -17,7 +16,6 @@ export default class List extends Component {
       </ol>
     );
   }
-
 }
 
 List.displayName = 'List';

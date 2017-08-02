@@ -15,7 +15,6 @@ for (let i = 0; i <= 6; i += 1) {
 }
 
 export class ExampleView extends Component {
-
   constructor(props) {
     super(props);
 
@@ -29,7 +28,6 @@ export class ExampleView extends Component {
       </div>
     );
   }
-
 }
 
 ExampleView.propTypes = {

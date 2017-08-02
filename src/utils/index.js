@@ -61,7 +61,9 @@ export function normalizeRSAARequest(obj: Object): Object {
   if (validateRSAARequest(obj)) {
     optionalTypes.forEach((key: string): void => {
       if (!{}.hasOwnProperty.call(obj, key)) {
-        Object.assign(obj, { [key]: null });
+        Object.assign(obj, {
+          [key]: null,
+        });
       }
     });
   }
