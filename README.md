@@ -28,6 +28,9 @@ Open [http://localhost:3000](http://localhost:3000) in your browser to display t
 |`lint:fix`|Lint and fix all `.js` files|
 |`test`|Runs unit tests with Karma|
 |`test:watch`|Runs unit tests and runs watcher|
+
+
+
 |`test:coverage`|Runs unit tests with Karma and generates a coverage report|
 |`doctor`|Removes node_modules, reinstalls and runs dev|
 |`clean`|Cleans out the dist folder|
