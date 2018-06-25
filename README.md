@@ -1,4 +1,4 @@
-# Redux Async Boilerplate
+# Redux Async Boilerplate [Maintenance mode]
 
 [![Build Status](https://travis-ci.org/shanedasilva/redux-async-boilerplate.svg?branch=master)](https://travis-ci.org/shanedasilva/redux-async-boilerplate)
 [![Code Climate](https://codeclimate.com/github/shanedasilva/redux-async-boilerplate/badges/gpa.svg)](https://codeclimate.com/github/shanedasilva/redux-async-boilerplate)
